@@ -103,7 +103,6 @@ namespace MyProject.Areas.Identity.Pages.Account
             returnUrl ??= Url.Content("~/");
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            _logger.LogInformation("ModelState valid: {value}", ModelState.IsValid);
             if (ModelState.IsValid)
             {
                 string userInputUsername;
@@ -116,13 +115,10 @@ namespace MyProject.Areas.Identity.Pages.Account
                         return Page();
                     }
                     userInputUsername = userInputResult.UserName;
-                    _logger.LogInformation("userInputResult: {value}", userInputResult?.UserName);
                 } 
                 else
                 {
                     userInputUsername = Input.EmailOrUsername;
-                    _logger.LogInformation("userInputResult: {value}", userInputUsername);
-
                 }
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
