@@ -1,7 +1,7 @@
 @model TvShow[]
 
 @{
-    ViewData["Title"] = "Shows";
+    ViewData["Title"] = "Show";
 }
 
 <div class = "container text-center">
@@ -9,9 +9,11 @@
         @foreach (var show in Model) 
         {
             <div class = "col-1">
-                <div class = "card bg-dark">
-                    <img class = "card-img-top img-fluid" src="@show.Image?.Medium" />
-                </div>
+                <a asp-controller="Show" asp-action="Details">
+                    <div class = "card bg-dark">
+                        <img class = "card-img-top img-fluid" src="@show.Image?.Medium" />
+                    </div>
+                </a>
             </div>
         }
     </div>

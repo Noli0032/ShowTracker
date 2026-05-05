@@ -17,4 +17,9 @@ public class ShowController : Controller
         TvShow[] tvShows = await _tvMazeService.GetWrapperTvShowsByPageAsync(0);
         return View(tvShows);
     }
+
+    public IActionResult Details(int id)
+    {
+        return View();
+    }
 }
