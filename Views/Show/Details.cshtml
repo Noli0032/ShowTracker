@@ -1,8 +1,27 @@
+@using Microsoft.CodeAnalysis.CSharp.Syntax
+@using MyProject.Controllers
 @model TvShow
 @{
     ViewData["Title"] = "Show Details";
 }
 
-<div class = "text-center">
-    <h1>Show details</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-3 text-center">
+            <div class="card bg-dark">
+                <img src="@Model.Image?.Original"/>
+            </div>
+            <div class="mt-2">
+                @foreach (var genre in Model.Genres) {
+                    <span class="badge text-bg-secondary">@genre</span>
+                }
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="text-center">
+                <h1>@Model.Name</h1>
+            </div>
+            @Html.Raw(Model.Summary)
+        </div>
+    </div>
 </div>

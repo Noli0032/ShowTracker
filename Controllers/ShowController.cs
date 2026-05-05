@@ -18,8 +18,13 @@ public class ShowController : Controller
         return View(tvShows);
     }
 
-    public IActionResult Details(int id)
+    public async Task<IActionResult> Details(int id)
     {
-        return View();
+        TvShow? tvShow = await _tvMazeService.GetTvShowDetails(id);
+        if (tvShow == null)
+        {
+            return NotFound();
+        } 
+        return View(tvShow);
     }
 }

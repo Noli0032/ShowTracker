@@ -9,7 +9,7 @@
         @foreach (var show in Model) 
         {
             <div class = "col-1">
-                <a asp-controller="Show" asp-action="Details">
+                <a asp-controller="Show" asp-action="Details" asp-route-id="@show.Id">
                     <div class = "card bg-dark">
                         <img class = "card-img-top img-fluid" src="@show.Image?.Medium" />
                     </div>

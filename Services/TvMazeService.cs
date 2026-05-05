@@ -31,4 +31,21 @@ public sealed class TvMazeService : ITvMazeService
 
         return [];
     }
+
+    public async Task<TvShow?> GetTvShowDetails(int id)
+    {
+        try
+        {
+            TvShow? tvShow = await _httpClient.GetFromJsonAsync<TvShow>(
+                $"shows/{id}",
+                new JsonSerializerOptions(JsonSerializerDefaults.Web));
+            return tvShow;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Error when fetching specific tv show details: {error}", ex);
+        }
+
+        return null;
+    }
 }
