@@ -1,7 +1,15 @@
+@model TvShow[]
+
 @{
-    ViewData["Title"] = "Shows Page";
+    ViewData["Title"] = "Shows";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Here we will display all the shows</h1>
+<div class = "text-center">
+    <h1>Shows</h1>
+    <ul>
+        @foreach (var show in Model) 
+        {
+            <li>@show.Name</li>
+        }
+    </ul>
 </div>

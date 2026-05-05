@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MyProject.Models;
 using MyProject.Services;
 
 namespace MyProject.Controllers;
@@ -11,8 +12,9 @@ public class ShowController : Controller
         _tvMazeService = tvMazeService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        TvShow[] tvShows = await _tvMazeService.GetWrapperTvShowsByPageAsync(0);
+        return View(tvShows);
     }
 }
