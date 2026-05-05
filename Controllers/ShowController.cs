@@ -14,7 +14,7 @@ public class ShowController : Controller
 
     public async Task<IActionResult> Index()
     {
-        TvShow[] tvShows = await _tvMazeService.GetWrapperTvShowsByPageAsync(0);
+        TvShow[] tvShows = await _tvMazeService.GetTvShowsByPageAsync(0);
         return View(tvShows);
     }
 

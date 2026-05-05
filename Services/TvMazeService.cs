@@ -14,7 +14,7 @@ public sealed class TvMazeService : ITvMazeService
         _logger = logger;
     }
 
-    public async Task<TvShow[]> GetWrapperTvShowsByPageAsync(int pageNumber)
+    public async Task<TvShow[]> GetTvShowsByPageAsync(int pageNumber)
     {
         try
         {

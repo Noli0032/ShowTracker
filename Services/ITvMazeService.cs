@@ -3,5 +3,6 @@ namespace MyProject.Services;
 
 public interface ITvMazeService
 {
-    Task<TvShow[]> GetWrapperTvShowsByPageAsync(int pageNumber);
+    Task<TvShow[]> GetTvShowsByPageAsync(int pageNumber);
+
 }
