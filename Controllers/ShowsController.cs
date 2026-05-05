@@ -4,10 +4,10 @@ using MyProject.Services;
 
 namespace MyProject.Controllers;
 
-public class ShowController : Controller
+public class ShowsController : Controller
 {
     private readonly ITvMazeService _tvMazeService;
-    public ShowController(ITvMazeService tvMazeService)
+    public ShowsController(ITvMazeService tvMazeService)
     {
         _tvMazeService = tvMazeService;
     }
