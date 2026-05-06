@@ -12,5 +12,5 @@ public class UserShowEntry
     public string? Notes {get; set;}
     public DateOnly? DateWatched {get; set;}
     public DateOnly? DateAdded {get; set;}
-    public required ApplicationUser User {get; set;}
+    public ApplicationUser? User {get; set;}
 }
