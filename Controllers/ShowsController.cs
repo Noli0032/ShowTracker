@@ -37,7 +37,7 @@ public class ShowsController : Controller
         var userId = _userManager.GetUserId(User);
 
         // A user which is not logged is still allowed to view show details, therefore this will return false in that case
-        bool isInWatchList = userId != null && await _showEntryService.IsInWatchList(userId, id);
+        bool isInWatchList = userId != null && await _showEntryService.IsInWatchlist(userId, id);
 
         ShowDetailsViewModel detailsViewModel = new ShowDetailsViewModel{
             Show = tvShow,
@@ -49,10 +49,21 @@ public class ShowsController : Controller
 
     [Authorize]
     [HttpPost]
-    public async Task<IActionResult> WatchList(int tvMazeShowId)
+    public async Task<IActionResult> WatchlistAdd(int tvMazeShowId)
     {
+        // Since we have the authorize attribute, we should be certain that this is not null
         var userId = _userManager.GetUserId(User)!;
-        await _showEntryService.AddToWatchList(userId, tvMazeShowId);
+        await _showEntryService.AddToWatchlist(userId, tvMazeShowId);
+        return RedirectToAction("Details", new {id = tvMazeShowId});
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> WatchlistRemove(int tvMazeShowId)
+    {
+        // Since we have the authorize attribute, we should be certain that this is not null
+        var userId = _userManager.GetUserId(User)!;
+        await _showEntryService.RemoveFromWatchlist(userId, tvMazeShowId);
         return RedirectToAction("Details", new {id = tvMazeShowId});
     }
 }

@@ -36,7 +36,7 @@
             {
                 @if (Model.IsInWatchList)
                 {
-                    <form asp-controller="Shows" asp-action="WatchList" method="">
+                    <form asp-controller="Shows" asp-action="WatchlistRemove" method="post">
                     <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id" />
                     <button type="submit" class="w-50 btn btn-lg btn-primary mt-2">
                         Remove From Watchlist
@@ -45,7 +45,7 @@
                 }
                 else 
                 {
-                    <form asp-controller="Shows" asp-action="WatchList" method="post">
+                    <form asp-controller="Shows" asp-action="WatchlistAdd" method="post">
                     <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id" />
                     <button type="submit" class="w-50 btn btn-lg btn-primary mt-2">
                         Add To Watchlist

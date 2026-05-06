@@ -2,6 +2,7 @@ namespace MyProject.Services;
 
 public interface IShowEntryService
 {
-    Task AddToWatchList(string userId, int tvMazeShowId);
-    Task<bool> IsInWatchList(string userID, int tvMazeShowId);
+    Task AddToWatchlist(string userId, int tvMazeShowId);
+    Task<bool> IsInWatchlist(string userID, int tvMazeShowId);
+    Task RemoveFromWatchlist(string UserId, int tvMazeShowId);
 }
