@@ -1,7 +1,9 @@
 @using Humanizer
 @using Microsoft.CodeAnalysis.CSharp.Syntax
 @using MyProject.Controllers
+@using MyProject.Areas.Identity.Data
 @model TvShow
+@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> SignInManager;
 @{
     ViewData["Title"] = "Show Details";
 }
@@ -32,6 +34,15 @@
                     <li class="list-group-item list-group-item-dark">Average Rating: @Model.Rating?.Average?.ToString().Replace(",", ".")</li>
                 </ul>
             </div>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <form asp-controller="Shows" asp-action="" method="post">
+                <input type="hidden" name="tvMazeShowId" value="@Model.Id" />
+                <button type="submit" class="w-50 btn btn-lg btn-primary mt-2">
+                    Add To Watchlist
+                </button>
+                </form>
+            }
         </div>
     </div>
 </div>

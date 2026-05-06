@@ -19,6 +19,8 @@ builder.Services.AddHttpClient<ITvMazeService, TvMazeService>()
         client.BaseAddress = new Uri("https://api.tvmaze.com/");
     });
 
+builder.Services.AddScoped<IShowEntryService, ShowEntryService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
