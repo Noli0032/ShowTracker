@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using MyProject.Areas.Identity.Data;
 using MyProject.Models.UserShow;
 
@@ -17,5 +18,11 @@ public class ShowEntryService : IShowEntryService
         var showEntry = new UserShowEntry{UserId = userId, TvMazeShowId = tvMazeShowId, Status = ShowStatus.Watchlist};
         _context.UserShowEntries.Add(showEntry);
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<bool> IsInWatchList(string userID, int tvMazeShowId)
+    {
+        return await _context.UserShowEntries
+        .AnyAsync(entry => entry.UserId == userID && entry.TvMazeShowId == tvMazeShowId);
     }
 }

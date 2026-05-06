@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration.UserSecrets;
 using MyProject.Areas.Identity.Data;
 using MyProject.Models;
 using MyProject.Services;
+using MyProject.ViewModels;
 
 namespace MyProject.Controllers;
 
@@ -32,8 +33,18 @@ public class ShowsController : Controller
         if (tvShow == null)
         {
             return NotFound();
-        } 
-        return View(tvShow);
+        }
+        var userId = _userManager.GetUserId(User);
+
+        // A user which is not logged is still allowed to view show details, therefore this will return false in that case
+        bool isInWatchList = userId != null && await _showEntryService.IsInWatchList(userId, id);
+
+        ShowDetailsViewModel detailsViewModel = new ShowDetailsViewModel{
+            Show = tvShow,
+            IsInWatchList = isInWatchList
+        };
+
+        return View(detailsViewModel);
     }
 
     [Authorize]

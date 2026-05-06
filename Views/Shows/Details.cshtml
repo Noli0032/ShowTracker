@@ -2,20 +2,18 @@
 @using Microsoft.CodeAnalysis.CSharp.Syntax
 @using MyProject.Controllers
 @using MyProject.Areas.Identity.Data
-@model TvShow
+@using MyProject.ViewModels
+@model ShowDetailsViewModel
 @inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> SignInManager;
-@{
-    ViewData["Title"] = "Show Details";
-}
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-3 text-center">
             <div class="card bg-dark">
-                <img src="@Model.Image?.Original"/>
+                <img src="@Model.Show.Image?.Original"/>
             </div>
             <div class="mt-2">
-                @foreach (var genre in Model.Genres) {
+                @foreach (var genre in Model.Show.Genres) {
                     <span class="badge text-bg-secondary">@genre</span>
                 }
             </div>
@@ -23,25 +21,37 @@
         <div class="col-md-5">
             <div class="card bg-dark text-white">
                 <div class = "card-body">
-                    <h1 class="card-title border-bottom border-light pb-2">@Model.Name</h1>
-                    @Html.Raw(Model.Summary)
+                    <h1 class="card-title border-bottom border-light pb-2">@Model.Show.Name</h1>
+                    @Html.Raw(Model.Show.Summary)
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item list-group-item-dark">Language: @Model.Language</li>
-                    <li class="list-group-item list-group-item-dark">Status: @Model.Status</li>
-                    <li class="list-group-item list-group-item-dark">Premiered: @Model.Premiered</li>
-                    <li class="list-group-item list-group-item-dark">Ended: @(Model.Ended.ToString() ?? "Still Airing")</li>
-                    <li class="list-group-item list-group-item-dark">Average Rating: @Model.Rating?.Average?.ToString().Replace(",", ".")</li>
+                    <li class="list-group-item list-group-item-dark">Language: @Model.Show.Language</li>
+                    <li class="list-group-item list-group-item-dark">Status: @Model.Show.Status</li>
+                    <li class="list-group-item list-group-item-dark">Premiered: @Model.Show.Premiered</li>
+                    <li class="list-group-item list-group-item-dark">Ended: @(Model.Show.Ended.ToString() ?? "Still Airing")</li>
+                    <li class="list-group-item list-group-item-dark">Average Rating: @Model.Show.Rating?.Average?.ToString().Replace(",", ".")</li>
                 </ul>
             </div>
             @if (SignInManager.IsSignedIn(User))
             {
-                <form asp-controller="Shows" asp-action="" method="post">
-                <input type="hidden" name="tvMazeShowId" value="@Model.Id" />
-                <button type="submit" class="w-50 btn btn-lg btn-primary mt-2">
-                    Add To Watchlist
-                </button>
-                </form>
+                @if (Model.IsInWatchList)
+                {
+                    <form asp-controller="Shows" asp-action="WatchList" method="">
+                    <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id" />
+                    <button type="submit" class="w-50 btn btn-lg btn-primary mt-2">
+                        Remove From Watchlist
+                    </button>
+                    </form>
+                }
+                else 
+                {
+                    <form asp-controller="Shows" asp-action="WatchList" method="post">
+                    <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id" />
+                    <button type="submit" class="w-50 btn btn-lg btn-primary mt-2">
+                        Add To Watchlist
+                    </button>
+                    </form>
+                }
             }
         </div>
     </div>
