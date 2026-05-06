@@ -34,24 +34,12 @@
             </div>
             @if (SignInManager.IsSignedIn(User))
             {
-                @if (Model.IsInWatchList)
-                {
-                    <form asp-controller="Shows" asp-action="WatchlistRemove" method="post">
-                    <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id" />
+                <form asp-controller="Shows" asp-action="@(Model.IsInWatchList ? "WatchlistRemove" : "WatchlistAdd")" method="post">
+                    <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id"/>
                     <button type="submit" class="w-50 btn btn-lg btn-primary mt-2">
-                        Remove From Watchlist
+                        @(Model.IsInWatchList ? "Remove From Watchlist" : "Add To Watchlist")
                     </button>
-                    </form>
-                }
-                else 
-                {
-                    <form asp-controller="Shows" asp-action="WatchlistAdd" method="post">
-                    <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id" />
-                    <button type="submit" class="w-50 btn btn-lg btn-primary mt-2">
-                        Add To Watchlist
-                    </button>
-                    </form>
-                }
+                </form>
             }
         </div>
     </div>
