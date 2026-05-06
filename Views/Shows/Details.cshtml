@@ -17,11 +17,20 @@
                 }
             </div>
         </div>
-        <div class="col-md-7">
-            <div class="text-center">
-                <h1>@Model.Name</h1>
+        <div class="col-md-5">
+            <div class="card bg-dark text-white">
+                <div class = "card-body">
+                    <h1 class="card-title border-bottom border-light pb-2">@Model.Name</h1>
+                    @Html.Raw(Model.Summary)
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-group-item-dark">Language: @Model.Language</li>
+                    <li class="list-group-item list-group-item-dark">Status: @Model.Status</li>
+                    <li class="list-group-item list-group-item-dark">Premiered: @Model.Premiered</li>
+                    <li class="list-group-item list-group-item-dark">Ended: @Model.Ended</li>
+                    <li class="list-group-item list-group-item-dark">Average Rating: @Model.Rating?.Average?.ToString().Replace(",", ".")</li>
+                </ul>
             </div>
-            @Html.Raw(Model.Summary)
         </div>
     </div>
 </div>
