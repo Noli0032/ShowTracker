@@ -21,4 +21,5 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     }
 
     public DbSet<UserShowEntry> UserShowEntries {get;set;}
+    public DbSet<CachedShow> CachedShow {get;set;}
 }

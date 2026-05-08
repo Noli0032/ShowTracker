@@ -1,5 +1,6 @@
 namespace MyProject.Models.UserShow;
 
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using MyProject.Areas.Identity.Data;
 
@@ -14,4 +15,7 @@ public class UserShowEntry
     public DateOnly? DateWatched {get; set;}
     public DateOnly? DateAdded {get; set;}
     public ApplicationUser? User {get; set;}
+    
+    [ForeignKey(nameof(TvMazeShowId))]
+    public CachedShow? CachedShow {get; set;}
 }
