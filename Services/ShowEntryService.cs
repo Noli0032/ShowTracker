@@ -7,14 +7,20 @@ namespace MyProject.Services;
 public class ShowEntryService : IShowEntryService
 {
     private readonly ApplicationDbContext _context;
+    private readonly ICachedShowService _cachedShowService;
 
-    public ShowEntryService(ApplicationDbContext context)
+    public ShowEntryService(ApplicationDbContext context, ICachedShowService cachedShowService)
     {
         _context = context;
+        _cachedShowService = cachedShowService;
     }
 
     public async Task AddToWatchlist(string userId, int tvMazeShowId)
     {
+        CachedShow? cachedShow = await _cachedShowService.EnsureCachedAsync(tvMazeShowId);
+
+        // Something went wrong, show could not be found on TvMaze
+        if (cachedShow == null) return;
         var showEntry = new UserShowEntry{UserId = userId, TvMazeShowId = tvMazeShowId, Status = ShowStatus.Watchlist};
         _context.UserShowEntries.Add(showEntry);
         await _context.SaveChangesAsync();
