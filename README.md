@@ -9,18 +9,19 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 <img width="1917" height="994" alt="Screenshot 2026-05-08 142632" src="https://github.com/user-attachments/assets/5389c942-a527-4d98-a03e-7b492583cefd" />
 
 ## Tech stack includes:
-- C# / .NET10.0
+- C# / .NET 10
 - ASP.NET Core
-  - Entity Framework
-    - PostgreSQL
-  - Identity
+- ASP.NET Core Identity
+- Entity Framework Core
+- PostgreSQL
 - Bootstrap 5
+- TVMaze API
 
 ## Implemented features so far:
-User registration and login with username or email.
-View that shows the first page of shows (250) available from the online TVMaze API.
-A details view with fetched information about any given show, which shows up when it is clicked.
-Adding the show to a user's personal watchlist, which is stored in a PostgreSQL database.
+- User registration and login with username or email.
+- View that shows the first page of shows (250) available from the online TVMaze API.
+- A details view with fetched information about any given show, which shows up when it is clicked.
+- Adding the show to a user's personal watchlist, which is stored in a PostgreSQL database.
 
 ## Architecture:
 - Built on ASP.NET core MVC and Identity
@@ -33,10 +34,8 @@ Adding the show to a user's personal watchlist, which is stored in a PostgreSQL 
 **Prerequisites**
   - .NET 10 SDK installed (https://dotnet.microsoft.com/download)
   - PostgreSQL 18 installed and running
-  - dotnet tools installed
-    ```
-    dotnet tool install --global dotnet-ef
-    ```
+Note: Install the EF core tools if not already installed:
+    `dotnet tool install --global dotnet-ef`
 1. Clone the repository 
    ```
    git clone https://github.com/Noli0032/ShowTracker.git
@@ -45,7 +44,7 @@ Adding the show to a user's personal watchlist, which is stored in a PostgreSQL 
 2. Set up PostgreSQL
   - Create a database called myprojectdb
   - Create a dedicated user with access to that database
-3. Configure user secrets (The connection string is set to go in user-secrets rather than in appsettings.json to avoid version control and plain text entirely + a layer of encryption)
+3. Configure user secrets (The connection string is set to go in user-secrets rather than in appsettings.json to avoid version control and plain text entirely)
     ```
     dotnet user-secrets init
     dotnet user-secrets set "ConnectionStrings:ApplicationDbContextConnection" "Host=localhost;Port=5432;Database=myprojectdb;Username=youruser;Password=yourpassword"
@@ -82,18 +81,19 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 <img width="1917" height="994" alt="Screenshot 2026-05-08 142632" src="https://github.com/user-attachments/assets/5389c942-a527-4d98-a03e-7b492583cefd" />
 
 ## Teknikstack:
-- C# / .NET10.0
+- C# / .NET 10
 - ASP.NET Core
-  - Entity Framework
-    - PostgreSQL
-  - Identity
+- ASP.NET Core Identity
+- Entity Framework Core
+- PostgreSQL
 - Bootstrap 5
+- TVMaze API
 
 ## Implementerade funktioner hittills:
-Användarregistrering och inloggning med användarnamn eller email.
-Vy som visar den första sidan av tv-serier (250) tillgängliga från TVMaze API som finns online.
-En detalj vy som visar hämtad information om vilken serie som helst som visas på vyn om man klickar på den.
-Kan lägga till en serie till användarens personliga lista av serier som de vill kolla på, som sedan förvaras i PostgreSQL databasen.
+- Användarregistrering och inloggning med användarnamn eller email.
+- Vy som visar den första sidan av tv-serier (250) tillgängliga från TVMaze API som finns online.
+- En detalj vy som visar hämtad information om vilken serie som helst som visas på vyn om man klickar på den.
+- Kan lägga till en serie till användarens personliga lista av serier som de vill kolla på, som sedan förvaras i PostgreSQL databasen.
 
 ## Arkitektur:
 - Byggt med ASP.NET core MVC och Identity som bas
@@ -106,6 +106,8 @@ Kan lägga till en serie till användarens personliga lista av serier som de vil
 **Förutsättningar för att kunna köra projektet**
   - .NET 10 SDK installerat (https://dotnet.microsoft.com/download)
   - PostgreSQL 18 installerat och igång
+OBS: Installera EF core verktygen om de inte redan är installerade:
+    `dotnet tool install --global dotnet-ef`
 1. Klona repositoryn 
    ```
    git clone https://github.com/Noli0032/ShowTracker.git
@@ -114,7 +116,7 @@ Kan lägga till en serie till användarens personliga lista av serier som de vil
 2. Sätt upp PostgreSQL
   - Skapa en databas och kalla den för myprojectdb
   - Skapa en dedikerad användare som har tillgång till den databasen
-3. Konfigurera User Secrets/användarhemligheter ("Connection string" är konfigurerad i användarhemligheterna istället för i appsettings.json för att undvika kontakt med versionshanterinsgverktyg + ett lager kryptering)
+3. Konfigurera User Secrets/användarhemligheter ("Connection string" är konfigurerad i användarhemligheterna istället för i appsettings.json för att undvika kontakt med versionshanteringsverktyg)
     ```
     dotnet user-secrets init
     dotnet user-secrets set "ConnectionStrings:ApplicationDbContextConnection" "Host=localhost;Port=5432;Database=myprojectdb;Username=youruser;Password=yourpassword"
