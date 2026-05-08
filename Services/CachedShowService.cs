@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using MyProject.Areas.Identity.Data;
 using MyProject.Models;
@@ -28,15 +29,15 @@ public class CachedShowService : ICachedShowService
             // Return early if tv show could not be fetched
             if (tvShow == null) return null;
 
-            string? imageUrlKey = null;
+            string? imagePath = null;
             if(tvShow.Image?.Medium != null)
             {
                 Uri siteUri = new Uri(tvShow.Image.Medium);
                 // We only need to store the last two segments of the ImageUrl
-                imageUrlKey = siteUri.Segments[^2] + siteUri.Segments[^1];   
+                imagePath = siteUri.Segments[^2] + siteUri.Segments[^1];   
             }
 
-            var cachedShow = new CachedShow{TvMazeShowId = tvShow.Id, Name = tvShow.Name, ImageUrl = imageUrlKey, LastSyncedAt = DateTime.UtcNow};
+            var cachedShow = new CachedShow{TvMazeShowId = tvShow.Id, Name = tvShow.Name, ImageUrl = imagePath, LastSyncedAt = DateTime.UtcNow};
             _context.Add(cachedShow);
             await _context.SaveChangesAsync();
             return cachedShow;

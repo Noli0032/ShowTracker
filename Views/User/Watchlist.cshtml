@@ -1,0 +1,20 @@
+@using MyProject.Models.UserShow
+@using MyProject.Helpers;
+@model List<UserShowEntry>
+
+<div class="container text-center">
+    <h1>Watchlist</h1>
+    <div class="row g-2">
+        @foreach(var show in Model)
+        {
+            <div class="col-1">
+                <a asp-controller="Shows" asp-action="Details" asp-route-id="@show.TvMazeShowId">
+                    <div class="card bg-dark">
+                        <img class="card-img-top img-fluid" src="@TvMazeUrlHelper.GetMediumImageUrl(show.CachedShow?.ImageUrl)"/>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+    
+</div>

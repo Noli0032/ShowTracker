@@ -42,4 +42,12 @@ public class ShowEntryService : IShowEntryService
         _context.UserShowEntries.Remove(showEntry);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<List<UserShowEntry>> GetWatchListAsync(string userId)
+    {
+        return await _context.UserShowEntries
+        .Where(entry => entry.UserId == userId)
+        .Include(entry => entry.CachedShow)
+        .ToListAsync();
+    }
 }
