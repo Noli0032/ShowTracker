@@ -5,6 +5,7 @@ This is an ongoing project for a web-application that can be used to track TV-sh
 rate, review, and keep track of which shows and episodes they have watched or are watching, as well as those they want to watch in the future.
 
 <img width="1915" height="991" alt="Screenshot 2026-05-08 142611" src="https://github.com/user-attachments/assets/ae7881d0-99c4-4c6e-9e0d-d7f550b77d92" />
+
 <img width="1917" height="994" alt="Screenshot 2026-05-08 142632" src="https://github.com/user-attachments/assets/5389c942-a527-4d98-a03e-7b492583cefd" />
 
 ## Tech stack includes:
@@ -69,7 +70,7 @@ Adding the show to a user's personal watchlist, which is stored in a PostgreSQL 
 
 ---
 <details>
-<summary>Svenska</summary>
+<summary><h2>Svenska</h2></summary>
 
 # ShowTracker
 
@@ -77,6 +78,7 @@ Detta är ett pågående project för en webb-applikation som är tänkt till at
 reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att kunna ge betyg och recensioner.
 
 <img width="1915" height="991" alt="Screenshot 2026-05-08 142611" src="https://github.com/user-attachments/assets/ae7881d0-99c4-4c6e-9e0d-d7f550b77d92" />
+
 <img width="1917" height="994" alt="Screenshot 2026-05-08 142632" src="https://github.com/user-attachments/assets/5389c942-a527-4d98-a03e-7b492583cefd" />
 
 ## Teknikstack:
