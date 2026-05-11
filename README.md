@@ -4,9 +4,9 @@
 This is an ongoing project for a web-application that can be used to track TV-shows, with the goal of having a user that is able to 
 rate, review, and keep track of which shows and episodes they have watched or are watching, as well as those they want to watch in the future.
 
-<img width="1915" height="991" alt="Screenshot 2026-05-08 142611" src="https://github.com/user-attachments/assets/ae7881d0-99c4-4c6e-9e0d-d7f550b77d92" />
+<img width="1918" height="992" alt="Screenshot 2026-05-11 091145" src="https://github.com/user-attachments/assets/7fba48fb-7456-4aca-a582-bd5192b79e0e" />
 <br>
-<img width="1917" height="994" alt="Screenshot 2026-05-08 142632" src="https://github.com/user-attachments/assets/5389c942-a527-4d98-a03e-7b492583cefd" />
+<img width="1918" height="991" alt="Screenshot 2026-05-11 091200" src="https://github.com/user-attachments/assets/90cc8a3c-6d3e-48bf-8de1-0765ec85daf0" />
 
 ## Tech stack includes:
 - C# / .NET 10
@@ -17,7 +17,7 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 - Bootstrap 5
 - TVMaze API
 
-## Implemented features so far:
+## Implemented features so far (Aside from the account features included in Identity):
 - User registration and login with username or email.
 - View that shows the first page of shows (250) available from the online TVMaze API.
 - A details view with fetched information about any given show, which shows up when it is clicked.
@@ -27,14 +27,13 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 - Built on ASP.NET core MVC and Identity
 - Dependency injection throughout the project
 - Entity Framework core migrations for schema management
-- Cache-Aside pattern for TVMaze API responses
-- Service layer separation
+- Local persistence of external API data
 
 ## How to run the project locally:
 **Prerequisites**
   - .NET 10 SDK installed (https://dotnet.microsoft.com/download)
   - PostgreSQL 18 installed and running
-Note: Install the EF core tools if not already installed:
+  - Install the EF core tools if not already installed:
     `dotnet tool install --global dotnet-ef`
 1. Clone the repository 
    ```
@@ -44,10 +43,10 @@ Note: Install the EF core tools if not already installed:
 2. Set up PostgreSQL
   - Create a database called myprojectdb
   - Create a dedicated user with access to that database
-3. Configure user secrets (The connection string is set to go in user-secrets rather than in appsettings.json to avoid version control and plain text entirely)
+3. Configure user secrets (The connection string is set to go in user-secrets rather than in appsettings.json to avoid version control entirely)
     ```
     dotnet user-secrets init
-    dotnet user-secrets set "ConnectionStrings:ApplicationDbContextConnection" "Host=localhost;Port=5432;Database=myprojectdb;Username=youruser;Password=yourpassword"
+    dotnet user-secrets set "ConnectionStrings:ApplicationDbContextConnection" "Host=localhost;Port=5432;Database=myprojectdb;Username=your_db_username;Password=your_db_password"
     ```
 4. Run migrations
     ```
@@ -73,12 +72,12 @@ Note: Install the EF core tools if not already installed:
 
 # ShowTracker
 
-Detta är ett pågående project för en webb-applikation som är tänkt till att användas för att man som en användare ska kunna hålla
+Detta är ett pågående projekt för en webb-applikation som är tänkt till att användas för att man som en användare ska kunna hålla
 reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att kunna ge betyg och recensioner.
 
-<img width="1915" height="991" alt="Screenshot 2026-05-08 142611" src="https://github.com/user-attachments/assets/ae7881d0-99c4-4c6e-9e0d-d7f550b77d92" />
+<img width="1918" height="992" alt="Screenshot 2026-05-11 091145" src="https://github.com/user-attachments/assets/7fba48fb-7456-4aca-a582-bd5192b79e0e" />
 <br>
-<img width="1917" height="994" alt="Screenshot 2026-05-08 142632" src="https://github.com/user-attachments/assets/5389c942-a527-4d98-a03e-7b492583cefd" />
+<img width="1918" height="991" alt="Screenshot 2026-05-11 091200" src="https://github.com/user-attachments/assets/90cc8a3c-6d3e-48bf-8de1-0765ec85daf0" />
 
 ## Teknikstack:
 - C# / .NET 10
@@ -89,7 +88,7 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 - Bootstrap 5
 - TVMaze API
 
-## Implementerade funktioner hittills:
+## Implementerade funktioner hittills (förutom de användar-funktioner som ingår i Identity):
 - Användarregistrering och inloggning med användarnamn eller email.
 - Vy som visar den första sidan av tv-serier (250) tillgängliga från TVMaze API som finns online.
 - En detalj vy som visar hämtad information om vilken serie som helst som visas på vyn om man klickar på den.
@@ -99,14 +98,13 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 - Byggt med ASP.NET core MVC och Identity som bas
 - Dependency injection genom hela projektet
 - Entity Framework core migrations för databas-schema hantering
-- Cache-Aside mönstret används för TVMaze API respons
-- Service lagret är separerat
+- Sparar data från externt API lokalt
 
 ## Hur man kör projektet lokalt:
 **Förutsättningar för att kunna köra projektet**
   - .NET 10 SDK installerat (https://dotnet.microsoft.com/download)
   - PostgreSQL 18 installerat och igång
-OBS: Installera EF core verktygen om de inte redan är installerade:
+  - Installera EF core verktygen om de inte redan är installerade
     `dotnet tool install --global dotnet-ef`
 1. Klona repositoryn 
    ```
@@ -119,7 +117,7 @@ OBS: Installera EF core verktygen om de inte redan är installerade:
 3. Konfigurera User Secrets/användarhemligheter ("Connection string" är konfigurerad i användarhemligheterna istället för i appsettings.json för att undvika kontakt med versionshanteringsverktyg)
     ```
     dotnet user-secrets init
-    dotnet user-secrets set "ConnectionStrings:ApplicationDbContextConnection" "Host=localhost;Port=5432;Database=myprojectdb;Username=youruser;Password=yourpassword"
+    dotnet user-secrets set "ConnectionStrings:ApplicationDbContextConnection" "Host=localhost;Port=5432;Database=myprojectdb;Username=your_db_username;Password=your_db_password"
     ```
 4. Kör "migrations"
     ```
