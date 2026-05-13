@@ -23,7 +23,14 @@ public class ShowsController : Controller
 
     public async Task<IActionResult> Index(int page = 0)
     {
-        TvShow[] tvShows = await _tvMazeService.GetTvShowsByPageAsync(page);
+        // Remove all shows without images, as they will not be displayed in this specific view
+        TvShow[] filtered = (await _tvMazeService.GetTvShowsByPageAsync(page))
+        .Where(show => show.Image?.Medium != null)
+        .ToArray();
+
+        // Filter to a number divisible by 12 to show only filled rows of shows in this view
+        TvShow[] tvShows = filtered.Take(filtered.Length - (filtered.Length % 12)).ToArray();
+
         ShowPageViewModel pageViewModel = new ShowPageViewModel
         {
             TvShows = tvShows,
