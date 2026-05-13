@@ -21,10 +21,15 @@ public class ShowsController : Controller
         _userManager = userManager;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int page = 0)
     {
-        TvShow[] tvShows = await _tvMazeService.GetTvShowsByPageAsync(0);
-        return View(tvShows);
+        TvShow[] tvShows = await _tvMazeService.GetTvShowsByPageAsync(page);
+        ShowPageViewModel pageViewModel = new ShowPageViewModel
+        {
+            TvShows = tvShows,
+            Page = page
+        };
+        return View(pageViewModel);
     }
 
     public async Task<IActionResult> Details(int id)
