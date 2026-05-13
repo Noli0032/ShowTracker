@@ -22,6 +22,7 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 - View that shows the first page of shows (250) available from the online TVMaze API.
 - A details view with fetched information about any given show, which shows up when it is clicked.
 - Adding the show to a user's personal watchlist, which is stored in a PostgreSQL database.
+- Functionality for being able to view multiple pages of shows.
 
 ## Architecture:
 - Built on ASP.NET core MVC and Identity
@@ -63,7 +64,6 @@ rate, review, and keep track of which shows and episodes they have watched or ar
   - Sorting shows by categories, popularity, rating etc.
   - A home menu screen
   - Search function
-  - Being able to view more pages of shows
   - Improving the UI (focus on Identity (Account Management Screen) and Watchlist screen)
 
 ---
@@ -93,6 +93,7 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 - Vy som visar den första sidan av tv-serier (250) tillgängliga från TVMaze API som finns online.
 - En detalj vy som visar hämtad information om vilken serie som helst som visas på vyn om man klickar på den.
 - Kan lägga till en serie till användarens personliga lista av serier som de vill kolla på, som sedan förvaras i PostgreSQL databasen.
+- Funktionalitet för att kunna bläddra mellan fler sidor av serier.
 
 ## Arkitektur:
 - Byggt med ASP.NET core MVC och Identity som bas
@@ -134,6 +135,5 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
   - Sortera serier via kategori, popularitet, betyg, etc.
   - En vy för hem-skärmen
   - Sökfunktion
-  - Att kunna bläddra mellan fler sidor av serier
   - Förbättra gränssnittet (med fokus på Identity (användarhanteringsskärmen) och vyn för listan av serier man sett)
 </details>
