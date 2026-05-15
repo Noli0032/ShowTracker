@@ -44,7 +44,7 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 2. Set up PostgreSQL
   - Create a database called myprojectdb
   - Create a dedicated user with access to that database
-3. Configure user secrets (The connection string is set to go in user-secrets rather than in appsettings.json to avoid version control entirely)
+3. Configure user secrets
     ```
     dotnet user-secrets init
     dotnet user-secrets set "ConnectionStrings:ApplicationDbContextConnection" "Host=localhost;Port=5432;Database=myprojectdb;Username=your_db_username;Password=your_db_password"
@@ -115,7 +115,7 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 2. Sätt upp PostgreSQL
   - Skapa en databas och kalla den för myprojectdb
   - Skapa en dedikerad användare som har tillgång till den databasen
-3. Konfigurera User Secrets/användarhemligheter ("Connection string" är konfigurerad i användarhemligheterna istället för i appsettings.json för att undvika kontakt med versionshanteringsverktyg)
+3. Konfigurera User Secrets/användarhemligheter
     ```
     dotnet user-secrets init
     dotnet user-secrets set "ConnectionStrings:ApplicationDbContextConnection" "Host=localhost;Port=5432;Database=myprojectdb;Username=your_db_username;Password=your_db_password"
