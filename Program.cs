@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyProject.Areas.Identity.Data;
 using MyProject.Services;
@@ -22,6 +21,10 @@ builder.Services.AddHttpClient<ITvMazeService, TvMazeService>()
 builder.Services.AddScoped<ICachedShowService, CachedShowService>();
 
 builder.Services.AddScoped<IShowEntryService, ShowEntryService>();
+
+builder.Services.AddMemoryCache();
+
+builder.Services.AddScoped<IShowBrowserService, ShowBrowserService>();
 
 var app = builder.Build();
 

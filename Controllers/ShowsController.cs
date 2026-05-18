@@ -13,23 +13,19 @@ public class ShowsController : Controller
 {
     private readonly ITvMazeService _tvMazeService;
     private readonly IShowEntryService _showEntryService;
+    private readonly IShowBrowserService _showBrowserService;
     private readonly UserManager<ApplicationUser> _userManager;
-    public ShowsController(ITvMazeService tvMazeService, IShowEntryService showEntryService, UserManager<ApplicationUser> userManager)
+    public ShowsController(ITvMazeService tvMazeService, IShowEntryService showEntryService, IShowBrowserService showBrowserService, UserManager<ApplicationUser> userManager)
     {
         _tvMazeService = tvMazeService;
         _showEntryService = showEntryService;
+        _showBrowserService = showBrowserService;
         _userManager = userManager;
     }
 
-    public async Task<IActionResult> Index(int page = 0)
+    public async Task<IActionResult> Index(int page = 1)
     {
-        // Remove all shows without images, as they will not be displayed in this specific view
-        TvShow[] filtered = (await _tvMazeService.GetTvShowsByPageAsync(page))
-        .Where(show => show.Image?.Medium != null)
-        .ToArray();
-
-        // Filter to a number divisible by 12 to show only filled rows of shows in this view
-        TvShow[] tvShows = filtered.Take(filtered.Length - (filtered.Length % 12)).ToArray();
+        TvShow[] tvShows = await _showBrowserService.GetShowsForPageAsync(page);
 
         ShowPageViewModel pageViewModel = new ShowPageViewModel
         {
