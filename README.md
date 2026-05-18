@@ -4,7 +4,7 @@
 This is an ongoing project for a web-application that can be used to track TV-shows, with the goal of having a user that is able to 
 rate, review, and keep track of which shows and episodes they have watched or are watching, as well as those they want to watch in the future.
 
-<img width="1918" height="992" alt="Screenshot 2026-05-11 091145" src="https://github.com/user-attachments/assets/7fba48fb-7456-4aca-a582-bd5192b79e0e" />
+<img width="1917" height="992" alt="Screenshot 2026-05-18 140923" src="https://github.com/user-attachments/assets/9b3da3d8-a0a5-40da-9f01-72777adecd1e" />
 <br>
 <img width="1918" height="991" alt="Screenshot 2026-05-11 091200" src="https://github.com/user-attachments/assets/90cc8a3c-6d3e-48bf-8de1-0765ec85daf0" />
 
@@ -75,7 +75,7 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 Detta är ett pågående projekt för en webb-applikation som är tänkt till att användas för att man som en användare ska kunna hålla
 reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att kunna ge betyg och recensioner.
 
-<img width="1918" height="992" alt="Screenshot 2026-05-11 091145" src="https://github.com/user-attachments/assets/7fba48fb-7456-4aca-a582-bd5192b79e0e" />
+<img width="1917" height="992" alt="Screenshot 2026-05-18 140923" src="https://github.com/user-attachments/assets/9b3da3d8-a0a5-40da-9f01-72777adecd1e" />
 <br>
 <img width="1918" height="991" alt="Screenshot 2026-05-11 091200" src="https://github.com/user-attachments/assets/90cc8a3c-6d3e-48bf-8de1-0765ec85daf0" />
 
