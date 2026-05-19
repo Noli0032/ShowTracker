@@ -1,3 +1,4 @@
+@using Microsoft.CodeAnalysis.CSharp.Syntax
 @using MyProject.Areas.Identity.Data
 @using MyProject.ViewModels
 @model ShowDetailsViewModel
@@ -29,15 +30,20 @@
                     <li class="list-group-item list-group-item-dark">Average Rating: @Model.Show.Rating?.Average?.ToString().Replace(",", ".")</li>
                 </ul>
             </div>
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <form asp-controller="Shows" asp-action="@(Model.IsInWatchList ? "WatchlistRemove" : "WatchlistAdd")" method="post">
-                    <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id"/>
-                    <button type="submit" class="w-50 btn btn-lg btn-primary mt-2">
-                        @(Model.IsInWatchList ? "Remove From Watchlist" : "Add To Watchlist")
-                    </button>
-                </form>
-            }
+            <div class="d-flex w-100">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <form asp-controller="Shows" asp-action="@(Model.IsInWatchList ? "WatchlistRemove" : "WatchlistAdd")" method="post" class="w-50">
+                        <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id"/>
+                        <button type="submit" class="w-100 btn btn-lg btn-primary mt-2">
+                            @(Model.IsInWatchList ? "Remove From Watchlist" : "Add To Watchlist")
+                        </button>
+                    </form>
+                }
+                <a asp-controller="Shows" asp-action="Episodes" asp-route-id="@Model.Show.Id" class="flex-grow-1">
+                    <button type="button" class="w-100 btn btn-lg btn-primary mt-2">View Episodes</button>
+                </a>
+            </div>
         </div>
     </div>
 </div>

@@ -55,6 +55,11 @@ public class ShowsController : Controller
         return View(detailsViewModel);
     }
 
+    public async Task<IActionResult> Episodes(int id)
+    {
+        return View(id);
+    }
+
     [Authorize]
     [HttpPost]
     public async Task<IActionResult> WatchlistAdd(int tvMazeShowId)
