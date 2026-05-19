@@ -6,7 +6,7 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 
 <img width="1917" height="992" alt="Screenshot 2026-05-18 140923" src="https://github.com/user-attachments/assets/9b3da3d8-a0a5-40da-9f01-72777adecd1e" />
 <br>
-<img width="1918" height="991" alt="Screenshot 2026-05-11 091200" src="https://github.com/user-attachments/assets/90cc8a3c-6d3e-48bf-8de1-0765ec85daf0" />
+<img width="1917" height="946" alt="Screenshot 2026-05-19 125601" src="https://github.com/user-attachments/assets/1a8f0c0b-0122-4166-9364-baab222c18a2" />
 
 ## Tech stack includes:
 - C# / .NET 10
@@ -23,6 +23,7 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 - A details view with fetched information about any given show, which shows up when it is clicked.
 - Adding the show to a user's personal watchlist, which is stored in a PostgreSQL database.
 - Functionality for being able to view multiple pages of shows.
+- Functionality for viewing all episodes available for a specific show.
 
 ## Architecture:
 - Built on ASP.NET core MVC and Identity
@@ -77,7 +78,7 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 
 <img width="1917" height="992" alt="Screenshot 2026-05-18 140923" src="https://github.com/user-attachments/assets/9b3da3d8-a0a5-40da-9f01-72777adecd1e" />
 <br>
-<img width="1918" height="991" alt="Screenshot 2026-05-11 091200" src="https://github.com/user-attachments/assets/90cc8a3c-6d3e-48bf-8de1-0765ec85daf0" />
+<img width="1917" height="946" alt="Screenshot 2026-05-19 125601" src="https://github.com/user-attachments/assets/1a8f0c0b-0122-4166-9364-baab222c18a2" />
 
 ## Teknikstack:
 - C# / .NET 10
@@ -94,6 +95,7 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 - En detalj vy som visar hämtad information om vilken serie som helst som visas på vyn om man klickar på den.
 - Kan lägga till en serie till användarens personliga lista av serier som de vill kolla på, som sedan förvaras i PostgreSQL databasen.
 - Funktionalitet för att kunna bläddra mellan fler sidor av serier.
+- Funktionalitet för att kunna visa alla epsioder för en viss serie.
 
 ## Arkitektur:
 - Byggt med ASP.NET core MVC och Identity som bas
