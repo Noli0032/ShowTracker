@@ -48,4 +48,21 @@ public sealed class TvMazeService : ITvMazeService
 
         return null;
     }
+
+    public async Task<TvShowEpisode[]> GetTvShowEpisodesAsync(int tvMazeShowId)
+    {
+        try
+        {
+            TvShowEpisode[]? tvShowEpisodes = await _httpClient.GetFromJsonAsync<TvShowEpisode[]>(
+                $"shows/{tvMazeShowId}/episodes",
+                new JsonSerializerOptions(JsonSerializerDefaults.Web));
+            return tvShowEpisodes ?? [];
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Error when fetching episodes for specific tv show: {error}", ex);
+        }
+
+        return [];
+    }
 }
