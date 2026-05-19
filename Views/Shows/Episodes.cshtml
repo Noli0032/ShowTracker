@@ -1,3 +1,24 @@
-<div class="text-center">
-    <h1>Episodes Page</h1>
-</div>
+@using MyProject.Models
+@model TvShowEpisode[]
+
+@foreach(var episode in Model) {
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-3">
+                <img src="@episode.Image?.Medium" class="img-fluid rounded-start h-100 object-fit-cover" />
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                    <div class ="d-flex justify-content-between align-items-start">
+                        <h5 class="card-title">@episode.Name</h5>
+                        <span class="badge bg-secondary ms-2">Rating: @episode.Rating?.Average?.ToString().Replace(",", ".")</span>
+                    </div>
+                    <p class ="card-text text-muted small">
+                        Season @episode.Season · Episode @episode.Number
+                    </p>
+                    <p class ="card-text">@Html.Raw(episode.Summary)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -57,7 +57,13 @@ public class ShowsController : Controller
 
     public async Task<IActionResult> Episodes(int id)
     {
-        return View(id);
+        TvShowEpisode?[] tvShowEpisodes = await _tvMazeService.GetTvShowEpisodesAsync(id);
+        if (tvShowEpisodes == null)
+        {
+            return NotFound();
+        }
+
+        return View(tvShowEpisodes);
     }
 
     [Authorize]
