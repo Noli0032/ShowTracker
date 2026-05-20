@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration.UserSecrets;
 using MyProject.Areas.Identity.Data;
 using MyProject.Models;
 using MyProject.Services;
@@ -62,7 +61,10 @@ public class ShowsController : Controller
         {
             return NotFound();
         }
-
+        foreach(var ep in tvShowEpisodes)
+        {
+            ep?.Summary = System.Text.RegularExpressions.Regex.Replace(ep.Summary ?? "", "<.*?>", "");
+        }
         return View(tvShowEpisodes);
     }
 

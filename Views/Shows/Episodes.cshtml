@@ -4,8 +4,10 @@
 @foreach(var episode in Model) {
     <div class="card mb-3">
         <div class="row g-0">
-            <div class="col-md-3">
-                <img src="@episode.Image?.Medium" class="img-fluid rounded-start h-100 object-fit-cover" />
+            <div class="col-md-3" style="height: 200px;">
+                <img src="@episode.Image?.Medium" 
+                    class="rounded-start"
+                    style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div class="col-md-9">
                 <div class="card-body">
@@ -14,9 +16,11 @@
                         <span class="badge bg-secondary ms-2">Rating: @episode.Rating?.Average?.ToString().Replace(",", ".")</span>
                     </div>
                     <p class ="card-text text-muted small">
-                        Season @episode.Season · Episode @episode.Number
+                        Season @episode.Season | Episode @episode.Number
                     </p>
-                    <p class ="card-text">@Html.Raw(episode.Summary)</p>
+                    <p class ="card-text" style="display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">
+                        @episode.Summary
+                    </p>
                 </div>
             </div>
         </div>

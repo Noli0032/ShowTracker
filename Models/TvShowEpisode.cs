@@ -10,5 +10,5 @@ public record TvShowEpisode
     public int? Runtime {get; init;}
     public TvShowRating? Rating {get; init;}
     public TvShowImage? Image {get; init;}
-    public required string Summary {get; init;}
+    public required string Summary {get; set;}
 }
