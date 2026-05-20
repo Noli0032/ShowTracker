@@ -19,10 +19,9 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 
 ## Implemented features so far (Aside from the account features included in Identity):
 - User registration and login with username or email.
-- View that shows the first page of shows (250) available from the online TVMaze API.
+- Functionality for being able to view multiple pages of shows, fetched from the online TVMaze API.
 - A details view with fetched information about any given show, which shows up when it is clicked.
 - Adding the show to a user's personal watchlist, which is stored in a PostgreSQL database.
-- Functionality for being able to view multiple pages of shows.
 - Functionality for viewing all episodes available for a specific show.
 
 ## Architecture:
@@ -91,10 +90,9 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 
 ## Implementerade funktioner hittills (förutom de användar-funktioner som ingår i Identity):
 - Användarregistrering och inloggning med användarnamn eller email.
-- Vy som visar den första sidan av tv-serier (250) tillgängliga från TVMaze API som finns online.
+- Funktionalitet för att kunna bläddra mellan sidor av serier, hämtade från TVMaze API.
 - En detalj vy som visar hämtad information om vilken serie som helst som visas på vyn om man klickar på den.
 - Kan lägga till en serie till användarens personliga lista av serier som de vill kolla på, som sedan förvaras i PostgreSQL databasen.
-- Funktionalitet för att kunna bläddra mellan fler sidor av serier.
 - Funktionalitet för att kunna visa alla epsioder för en viss serie.
 
 ## Arkitektur:
