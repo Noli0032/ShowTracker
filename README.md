@@ -4,9 +4,10 @@
 This is an ongoing project for a web-application that can be used to track TV-shows, with the goal of having a user that is able to 
 rate, review, and keep track of which shows and episodes they have watched or are watching, as well as those they want to watch in the future.
 
-<img width="1917" height="992" alt="Screenshot 2026-05-18 140923" src="https://github.com/user-attachments/assets/9b3da3d8-a0a5-40da-9f01-72777adecd1e" />
+<img width="1917" height="989" alt="Screenshot 2026-05-22 123055" src="https://github.com/user-attachments/assets/12ef1073-060e-4111-9e82-49c799a4759c" />
 <br>
-<img width="1917" height="946" alt="Screenshot 2026-05-19 125601" src="https://github.com/user-attachments/assets/1a8f0c0b-0122-4166-9364-baab222c18a2" />
+<img width="1916" height="992" alt="Screenshot 2026-05-22 123107" src="https://github.com/user-attachments/assets/6c3d266c-6071-4907-8387-bf382eb7d087" />
+
 
 ## Tech stack includes:
 - C# / .NET 10
@@ -23,6 +24,7 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 - A details view with fetched information about any given show, which shows up when it is clicked.
 - Adding the show to a user's personal watchlist, which is stored in a PostgreSQL database.
 - Functionality for viewing all episodes available for a specific show.
+- Search functionality for finding specific shows
 
 ## Architecture:
 - Built on ASP.NET core MVC and Identity
@@ -63,7 +65,6 @@ rate, review, and keep track of which shows and episodes they have watched or ar
   - Tracking watched shows and episodes
   - Sorting shows by categories, popularity, rating etc.
   - A home menu screen
-  - Search function
   - Improving the UI (focus on Identity (Account Management Screen) and Watchlist screen)
 
 ---
@@ -75,9 +76,9 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 Detta är ett pågående projekt för en webb-applikation som är tänkt till att användas för att man som en användare ska kunna hålla
 reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att kunna ge betyg och recensioner.
 
-<img width="1917" height="992" alt="Screenshot 2026-05-18 140923" src="https://github.com/user-attachments/assets/9b3da3d8-a0a5-40da-9f01-72777adecd1e" />
+<img width="1917" height="989" alt="Screenshot 2026-05-22 123055" src="https://github.com/user-attachments/assets/12ef1073-060e-4111-9e82-49c799a4759c" />
 <br>
-<img width="1917" height="946" alt="Screenshot 2026-05-19 125601" src="https://github.com/user-attachments/assets/1a8f0c0b-0122-4166-9364-baab222c18a2" />
+<img width="1916" height="992" alt="Screenshot 2026-05-22 123107" src="https://github.com/user-attachments/assets/6c3d266c-6071-4907-8387-bf382eb7d087" />
 
 ## Teknikstack:
 - C# / .NET 10
@@ -94,6 +95,7 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 - En detalj vy som visar hämtad information om vilken serie som helst som visas på vyn om man klickar på den.
 - Kan lägga till en serie till användarens personliga lista av serier som de vill kolla på, som sedan förvaras i PostgreSQL databasen.
 - Funktionalitet för att kunna visa alla epsioder för en viss serie.
+- Sökfunktionalitet för att hitta specifika serier
 
 ## Arkitektur:
 - Byggt med ASP.NET core MVC och Identity som bas
@@ -134,6 +136,5 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
   - Hålla koll på vilka serier man sett, samt episoder
   - Sortera serier via kategori, popularitet, betyg, etc.
   - En vy för hem-skärmen
-  - Sökfunktion
   - Förbättra gränssnittet (med fokus på Identity (användarhanteringsskärmen) och vyn för listan av serier man sett)
 </details>
