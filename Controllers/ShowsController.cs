@@ -5,6 +5,7 @@ using MyProject.Areas.Identity.Data;
 using MyProject.Models;
 using MyProject.Services;
 using MyProject.ViewModels;
+using NuGet.Packaging;
 
 namespace MyProject.Controllers;
 
@@ -60,10 +61,6 @@ public class ShowsController : Controller
         if (tvShowEpisodes == null)
         {
             return NotFound();
-        }
-        foreach(var ep in tvShowEpisodes)
-        {
-            ep?.Summary = System.Text.RegularExpressions.Regex.Replace(ep.Summary ?? "", "<.*?>", "");
         }
         return View(tvShowEpisodes);
     }
