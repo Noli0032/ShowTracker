@@ -65,6 +65,12 @@ public class ShowsController : Controller
         return View(tvShowEpisodes);
     }
 
+    public async Task<IActionResult> Search(string query)
+    {
+        TvShow[] tvShows = await _tvMazeService.SearchTvShowsAsync(query);
+        return View(tvShows);
+    }
+
     [Authorize]
     [HttpPost]
     public async Task<IActionResult> WatchlistAdd(int tvMazeShowId)

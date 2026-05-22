@@ -20,7 +20,6 @@ public sealed class TvMazeService : ITvMazeService
             TvShow[]? tvShows = await _httpClient.GetFromJsonAsync<TvShow[]>(
                 $"shows?page={pageNumber}",
                 new JsonSerializerOptions(JsonSerializerDefaults.Web));
-            
             return tvShows ?? [];
         }
         catch (Exception ex)
@@ -65,14 +64,19 @@ public sealed class TvMazeService : ITvMazeService
         return [];
     }
 
-    public async Task<WrappedTvShow[]> SearchTvShowsAsync(string query)
+    public async Task<TvShow[]> SearchTvShowsAsync(string query)
     {
         try
         {
-            WrappedTvShow[]? tvShows = await _httpClient.GetFromJsonAsync<WrappedTvShow[]>(
+            WrappedTvShow[]? wrappedTvShows = await _httpClient.GetFromJsonAsync<WrappedTvShow[]>(
                 $"search/shows?q={query}",
                 new JsonSerializerOptions(JsonSerializerDefaults.Web));
-            return tvShows ?? [];
+            // Return the shows instead of the wrappers, and only return those that have a mediuim image attached
+            TvShow[] tvShows = (wrappedTvShows ?? [])
+            .Select(w => w.Show)
+            .Where(show => show.Image?.Medium != null)
+            .ToArray();
+            return tvShows;
         }
         catch (Exception ex)
         {

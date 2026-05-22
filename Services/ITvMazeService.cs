@@ -6,5 +6,5 @@ public interface ITvMazeService
     Task<TvShow[]> GetTvShowsByPageAsync(int pageNumber);
     Task<TvShow?> GetTvShowDetails(int id);
     Task<TvShowEpisode[]> GetTvShowEpisodesAsync(int tvMazeShowId);
-    Task<WrappedTvShow[]> SearchTvShowsAsync(string query);
+    Task<TvShow[]> SearchTvShowsAsync(string query);
 }
