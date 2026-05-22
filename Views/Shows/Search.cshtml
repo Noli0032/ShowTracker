@@ -6,24 +6,25 @@
     {
         <div class=col">
             <div class="card bg-secondary-subtle mb-3">
-            <div class="row g-0">
-                <div class= "col-md-4">
-                    <img src="@show.Image?.Medium" class="search-card-img"/>
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <div class="card-header bg-body-primary">
-                            <h5 class="card-title">@show.Name</h5>
-                        </div>
-                        <div class="card-body search-card-summary-body bg-body-tertiary">
-                            <div class ="card-text clamped-summary">
-                                @Html.Raw(show.Summary)
+                <div class="row g-0">
+                    <div class= "col-md-4">
+                        <img src="@show.Image?.Medium" class="search-card-img"/>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="card-header bg-body-primary">
+                                <h5 class="card-title">@show.Name</h5>
+                            </div>
+                            <div class="card-body search-card-summary-body bg-body-tertiary">
+                                <div class ="card-text clamped-summary">
+                                    @Html.Raw(show.Summary)
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <a class="stretched-link" asp-controller="Shows" asp-action="Details" asp-route-id="@show.Id"></a>
             </div>
-        </div>
         </div>
     }
 </div>
