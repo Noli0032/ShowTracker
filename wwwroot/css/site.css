@@ -54,3 +54,7 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+.search-card-summary-body {
+  min-height: 130px;
+}
