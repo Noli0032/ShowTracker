@@ -64,4 +64,21 @@ public sealed class TvMazeService : ITvMazeService
 
         return [];
     }
+
+    public async Task<WrappedTvShow[]> SearchTvShowsAsync(string query)
+    {
+        try
+        {
+            WrappedTvShow[]? tvShows = await _httpClient.GetFromJsonAsync<WrappedTvShow[]>(
+                $"search/shows?q={query}",
+                new JsonSerializerOptions(JsonSerializerDefaults.Web));
+            return tvShows ?? [];
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Error when fetching episodes for search: {error}", ex);
+        }
+
+        return [];
+    }
 }
