@@ -1,0 +1,29 @@
+@using MyProject.Models
+@model TvShow[]
+
+<div class ="row row-cols-md-3 g-3">
+    @foreach(var show in Model)
+    {
+        <div class=col">
+            <div class="card bg-secondary-subtle mb-3">
+            <div class="row g-0">
+                <div class= "col-md-4">
+                    <img src="@show.Image?.Medium" class="search-card-img"/>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div class="card-header bg-body-primary">
+                            <h5 class="card-title">@show.Name</h5>
+                        </div>
+                        <div class="card-body bg-body-tertiary">
+                            <div class ="card-text clamped-summary">
+                                @Html.Raw(show.Summary)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    }
+</div>

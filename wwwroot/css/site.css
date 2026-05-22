@@ -39,12 +39,18 @@ body {
 
 .clamped-summary{
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: var(--clamp-lines, 4);
   -webkit-box-orient: vertical;
-  line-clamp: 4;
+  line-clamp: var(--clamp-lines, 4);
   overflow: hidden;
 }
 
 .clamped-summary p {
   margin-bottom: 0;
+}
+
+.search-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
