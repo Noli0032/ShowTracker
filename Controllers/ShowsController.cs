@@ -57,12 +57,13 @@ public class ShowsController : Controller
 
     public async Task<IActionResult> Episodes(int id)
     {
-        TvShowEpisode?[] tvShowEpisodes = await _tvMazeService.GetTvShowEpisodesAsync(id);
-        if (tvShowEpisodes == null)
-        {
-            return NotFound();
-        }
-        return View(tvShowEpisodes);
+        TvShowEpisode[] tvShowEpisodes = await _tvMazeService.GetTvShowEpisodesAsync(id);
+        var episodesBySeason = tvShowEpisodes
+            .GroupBy(e => e.Season)
+            .OrderBy(g => g.Key)
+            .ToDictionary(g => g.Key, g => g.ToList());
+
+        return View(episodesBySeason);
     }
 
     public async Task<IActionResult> Search(string query)
