@@ -53,10 +53,17 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: var(--bs-card-inner-border-radius) 0 0 var(--bs-card-inner-border-radius);
 }
 
 .search-card-summary-body {
-  min-height: 130px;
+  min-height: 215px;
+}
+
+.card-hoverable:hover {
+  border-color: white;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  transition: border-color 0.2s ease;
 }
 
 .nav-tabs .nav-link {
