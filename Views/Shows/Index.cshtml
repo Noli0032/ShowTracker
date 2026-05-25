@@ -11,8 +11,8 @@
         {
             <div class="col-1">
                 <a asp-controller="Shows" asp-action="Details" asp-route-id="@show.Id">
-                    <div class="card bg-dark">
-                        <img class="card-img-top img-fluid" src="@show.Image?.Medium" />
+                    <div class="card bg-dark card-hoverable ">
+                        <img class="card-img-top img-fluid rounded" src="@show.Image?.Medium" />
                     </div>
                 </a>
             </div>
