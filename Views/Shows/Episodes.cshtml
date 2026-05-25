@@ -1,32 +1,46 @@
 @using MyProject.Models
 @model Dictionary<int, List<TvShowEpisode>>
 
-@foreach(var season in Model) {
-    <h3>Season @season.Key</h3>
-    @foreach(var episode in season.Value)
+
+<ul class="nav nav-tabs">
+    @foreach(var season in Model)
     {
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-3" style="height: 200px;">
-                    <img src="@episode.Image?.Medium" 
-                        class="rounded-start"
-                        style="width: 100%; height: 100%; object-fit: cover;" />
-                </div>
-                <div class="col-md-9">
-                    <div class="card-body">
-                        <div class ="d-flex justify-content-between align-items-start">
-                            <h5 class="card-title">@episode.Name</h5>
-                            <span class="badge bg-secondary ms-2">Rating: @episode.Rating?.Average?.ToString().Replace(",", ".")</span>
+        <li class="nav-item">
+            <div class="nav-link @(season.Key == Model.Keys.First() ? "active" : "")" data-bs-toggle="tab" data-bs-target="#season-@season.Key">Season @season.Key</div>
+        </li>
+    }
+</ul>
+
+<div class="tab-content">
+    @foreach(var season in Model)
+    {
+        <div class="tab-pane @(season.Key == Model.Keys.First() ? "show active" : "")" id="season-@season.Key">
+            @foreach(var episode in season.Value)
+            {
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-3" style="height: 200px;">
+                            <img src="@episode.Image?.Medium" 
+                                class="rounded-start"
+                                style="width: 100%; height: 100%; object-fit: cover;" />
                         </div>
-                        <p class ="card-text text-muted small">
-                            Season @episode.Season | Episode @episode.Number
-                        </p>
-                        <div class ="card-text clamped-summary">
-                            @Html.Raw(episode.Summary)
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <div class ="d-flex justify-content-between align-items-start">
+                                    <h5 class="card-title">@episode.Name</h5>
+                                    <span class="badge bg-secondary ms-2">Rating: @episode.Rating?.Average?.ToString().Replace(",", ".")</span>
+                                </div>
+                                <p class ="card-text text-muted small">
+                                    Season @episode.Season | Episode @episode.Number
+                                </p>
+                                <div class ="card-text clamped-summary">
+                                    @Html.Raw(episode.Summary)
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     }
-}
+</div>

@@ -58,3 +58,8 @@ body {
 .search-card-summary-body {
   min-height: 130px;
 }
+
+.nav-tabs .nav-link {
+  color: #A9A9A9;
+  cursor: pointer;
+}
