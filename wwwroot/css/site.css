@@ -75,3 +75,16 @@ body {
   color: #A9A9A9;
   cursor: pointer;
 }
+
+.icon-btn {
+  color: white;
+  text-decoration: none;
+}
+
+.icon-btn:hover {
+  color: #A9A9A9;
+}
+
+.icon-xl {
+  font-size: 3.5rem;
+}

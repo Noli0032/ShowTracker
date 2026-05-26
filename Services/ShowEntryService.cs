@@ -15,24 +15,40 @@ public class ShowEntryService : IShowEntryService
         _cachedShowService = cachedShowService;
     }
 
-    public async Task AddToWatchlist(string userId, int tvMazeShowId)
+    public async Task UpsertShowEntryAsync(string userId, int tvMazeShowId, ShowStatus showStatus)
     {
         CachedShow? cachedShow = await _cachedShowService.EnsureCachedAsync(tvMazeShowId);
 
         // Something went wrong, show could not be found on TvMaze
         if (cachedShow == null) return;
-        var showEntry = new UserShowEntry{UserId = userId, TvMazeShowId = tvMazeShowId, Status = ShowStatus.Watchlist};
-        _context.UserShowEntries.Add(showEntry);
+
+        // Check if a show entry already exists for this user on this show
+        var showEntry = await _context.UserShowEntries
+            .SingleOrDefaultAsync(e => e.UserId == userId && e.TvMazeShowId == tvMazeShowId);
+
+        // No show entry exists, create one
+        if(showEntry == null)
+        {
+            showEntry = new UserShowEntry{UserId = userId, TvMazeShowId = tvMazeShowId, Status = showStatus, DateAdded = DateOnly.FromDateTime(DateTime.UtcNow)};
+            _context.UserShowEntries.Add(showEntry);
+        }
+        // If it exists, update the status
+        else
+        {
+            showEntry.Status = showStatus;
+        }
         await _context.SaveChangesAsync();
     }
 
-    public async Task<bool> IsInWatchlist(string userId, int tvMazeShowId)
+    public async Task<ShowStatus?> GetShowStatusAsync(string userId, int tvMazeShowId)
     {
-        return await _context.UserShowEntries
-        .AnyAsync(entry => entry.UserId == userId && entry.TvMazeShowId == tvMazeShowId);
+        var showEntry = await _context.UserShowEntries
+        .SingleOrDefaultAsync(entry => entry.UserId == userId && entry.TvMazeShowId == tvMazeShowId);
+
+        return showEntry?.Status;
     }
 
-    public async Task RemoveFromWatchlist(string userId, int tvMazeShowId)
+    public async Task RemoveUserEntryAsync(string userId, int tvMazeShowId)
     {
         var showEntry = await _context.UserShowEntries.SingleOrDefaultAsync(entry => entry.UserId == userId && entry.TvMazeShowId == tvMazeShowId);
         if(showEntry == null)

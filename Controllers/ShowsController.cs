@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyProject.Areas.Identity.Data;
 using MyProject.Models;
+using MyProject.Models.UserShow;
 using MyProject.Services;
 using MyProject.ViewModels;
-using NuGet.Packaging;
 
 namespace MyProject.Controllers;
 
@@ -44,12 +44,11 @@ public class ShowsController : Controller
         }
         var userId = _userManager.GetUserId(User);
 
-        // A user which is not logged is still allowed to view show details, therefore this will return false in that case
-        bool isInWatchList = userId != null && await _showEntryService.IsInWatchlist(userId, id);
+        ShowStatus? showStatus = userId != null ? await _showEntryService.GetShowStatusAsync(userId, id) : null;
 
         ShowDetailsViewModel detailsViewModel = new ShowDetailsViewModel{
             Show = tvShow,
-            IsInWatchList = isInWatchList
+            ShowStatus = showStatus 
         };
 
         return View(detailsViewModel);
@@ -74,21 +73,21 @@ public class ShowsController : Controller
 
     [Authorize]
     [HttpPost]
-    public async Task<IActionResult> WatchlistAdd(int tvMazeShowId)
+    public async Task<IActionResult> UpdateStatus(ShowStatus showStatus, int tvMazeShowId)
     {
         // Since we have the authorize attribute, we should be certain that this is not null
         var userId = _userManager.GetUserId(User)!;
-        await _showEntryService.AddToWatchlist(userId, tvMazeShowId);
+        await _showEntryService.UpsertShowEntryAsync(userId, tvMazeShowId, showStatus);
         return RedirectToAction("Details", new {id = tvMazeShowId});
     }
 
     [Authorize]
     [HttpPost]
-    public async Task<IActionResult> WatchlistRemove(int tvMazeShowId)
+    public async Task<IActionResult> ShowEntryDelete(int tvMazeShowId)
     {
         // Since we have the authorize attribute, we should be certain that this is not null
         var userId = _userManager.GetUserId(User)!;
-        await _showEntryService.RemoveFromWatchlist(userId, tvMazeShowId);
+        await _showEntryService.RemoveUserEntryAsync(userId, tvMazeShowId);
         return RedirectToAction("Details", new {id = tvMazeShowId});
     }
 }

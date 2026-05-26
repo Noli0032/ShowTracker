@@ -3,8 +3,8 @@ using MyProject.Models.UserShow;
 namespace MyProject.Services;
 public interface IShowEntryService
 {
-    Task AddToWatchlist(string userId, int tvMazeShowId);
-    Task<bool> IsInWatchlist(string userID, int tvMazeShowId);
-    Task RemoveFromWatchlist(string UserId, int tvMazeShowId);
+    Task UpsertShowEntryAsync(string userId, int tvMazeShowId, ShowStatus showStatus);
+    Task<ShowStatus?> GetShowStatusAsync(string userId, int tvMazeShowId);
+    Task RemoveUserEntryAsync(string UserId, int tvMazeShowId);
     Task<List<UserShowEntry>>GetWatchListAsync(string userId);
 }
