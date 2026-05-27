@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using MyProject.Areas.Identity.Data;
 using MyProject.Models;
@@ -25,7 +24,7 @@ public class CachedShowService : ICachedShowService
         }
         else
         {
-            TvShow? tvShow = await _tvMazeService.GetTvShowDetails(tvMazeShowId);
+            TvShow? tvShow = await _tvMazeService.GetTvShowDetailsAsync(tvMazeShowId);
             // Return early if tv show could not be fetched
             if (tvShow == null) return null;
 

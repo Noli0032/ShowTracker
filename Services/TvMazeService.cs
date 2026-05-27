@@ -30,7 +30,7 @@ public sealed class TvMazeService : ITvMazeService
         return [];
     }
 
-    public async Task<TvShow?> GetTvShowDetails(int id)
+    public async Task<TvShow?> GetTvShowDetailsAsync(int id)
     {
         try
         {

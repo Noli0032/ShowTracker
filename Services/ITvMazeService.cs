@@ -4,7 +4,7 @@ namespace MyProject.Services;
 public interface ITvMazeService
 {
     Task<TvShow[]> GetTvShowsByPageAsync(int pageNumber);
-    Task<TvShow?> GetTvShowDetails(int id);
+    Task<TvShow?> GetTvShowDetailsAsync(int id);
     Task<TvShowEpisode[]> GetTvShowEpisodesAsync(int tvMazeShowId);
     Task<TvShow[]> SearchTvShowsAsync(string query);
 }

@@ -37,7 +37,7 @@ public class ShowsController : Controller
 
     public async Task<IActionResult> Details(int id)
     {
-        TvShow? tvShow = await _tvMazeService.GetTvShowDetails(id);
+        TvShow? tvShow = await _tvMazeService.GetTvShowDetailsAsync(id);
         if (tvShow == null)
         {
             return NotFound();
