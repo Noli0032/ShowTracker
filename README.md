@@ -6,7 +6,8 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 
 <img width="1917" height="989" alt="Screenshot 2026-05-22 123055" src="https://github.com/user-attachments/assets/12ef1073-060e-4111-9e82-49c799a4759c" />
 <br>
-<img width="1916" height="992" alt="Screenshot 2026-05-22 123107" src="https://github.com/user-attachments/assets/6c3d266c-6071-4907-8387-bf382eb7d087" />
+<img width="1919" height="990" alt="Screenshot 2026-05-27 120043" src="https://github.com/user-attachments/assets/90105ca2-7177-4732-978e-a958a6a4d945" />
+
 
 
 ## Tech stack includes:
@@ -79,7 +80,7 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 
 <img width="1917" height="989" alt="Screenshot 2026-05-22 123055" src="https://github.com/user-attachments/assets/12ef1073-060e-4111-9e82-49c799a4759c" />
 <br>
-<img width="1916" height="992" alt="Screenshot 2026-05-22 123107" src="https://github.com/user-attachments/assets/6c3d266c-6071-4907-8387-bf382eb7d087" />
+<img width="1919" height="990" alt="Screenshot 2026-05-27 120043" src="https://github.com/user-attachments/assets/90105ca2-7177-4732-978e-a958a6a4d945" />
 
 ## Teknikstack:
 - C# / .NET 10
