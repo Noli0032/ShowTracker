@@ -19,7 +19,7 @@
             {
                 <form asp-controller="Shows" asp-action="ShowEntryDelete" method="post">
                     <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id" />
-                    <button type ="submit" class="btn icon-btn shadow-none border-0 ps-4 d-block">
+                    <button type ="submit" class="btn icon-btn shadow-none border-0">
                         <i class="bi bi-eye-fill icon-xl"></i>
                         <div class="small">Watched</div>
                     </button>
@@ -30,7 +30,7 @@
                 <form asp-controller="Shows" asp-action="UpdateStatus" method="post">
                     <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id" />
                     <input type="hidden" name="showStatus" value="Watched" />
-                    <button type ="submit" class="btn icon-btn shadow-none border-0 ps-4 d-block">
+                    <button type ="submit" class="btn icon-btn shadow-none border-0">
                         <i class="bi bi-eye icon-xl"></i>
                         <div class="small">Watch</div>
                     </button>
@@ -52,19 +52,16 @@
                 </ul>
             </div>
             <div class="d-flex w-100">
-                @if (SignInManager.IsSignedIn(User))
-                {
-                    <form asp-controller="Shows" asp-action="@(Model.ShowStatus == ShowStatus.Watchlist ? "ShowEntryDelete" : "UpdateStatus")" method="post" class="w-50">
-                        <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id"/>
-                        @if (Model.ShowStatus != ShowStatus.Watchlist)
-                        {
-                            <input type="hidden" name="showStatus" value="Watchlist"/>
-                        }
-                        <button type="submit" class="w-100 btn btn-lg btn-primary mt-2">
-                            @(Model.ShowStatus == ShowStatus.Watchlist ? "Remove From Watchlist" : "Add To Watchlist")
-                        </button>
-                    </form>
-                }
+                <form asp-controller="Shows" asp-action="@(Model.ShowStatus == ShowStatus.Watchlist ? "ShowEntryDelete" : "UpdateStatus")" method="post" class="w-50">
+                    <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id"/>
+                    @if (Model.ShowStatus != ShowStatus.Watchlist)
+                    {
+                        <input type="hidden" name="showStatus" value="Watchlist"/>
+                    }
+                    <button type="submit" class="w-100 btn btn-lg btn-primary mt-2">
+                        @(Model.ShowStatus == ShowStatus.Watchlist ? "Remove From Watchlist" : "Add To Watchlist")
+                    </button>
+                </form>
                 <a asp-controller="Shows" asp-action="Episodes" asp-route-id="@Model.Show.Id" class="flex-grow-1">
                     <button type="button" class="w-100 btn btn-lg btn-primary mt-2">View Episodes</button>
                 </a>
