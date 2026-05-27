@@ -62,7 +62,7 @@ public class ShowEntryService : IShowEntryService
     public async Task<List<UserShowEntry>> GetWatchListAsync(string userId)
     {
         return await _context.UserShowEntries
-        .Where(entry => entry.UserId == userId)
+        .Where(entry => entry.UserId == userId && entry.Status == ShowStatus.Watchlist)
         .Include(entry => entry.CachedShow)
         .ToListAsync();
     }
