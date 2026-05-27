@@ -25,6 +25,7 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 - Adding the show to a user's personal watchlist, which is stored in a PostgreSQL database.
 - Functionality for viewing all episodes available for a specific show.
 - Search functionality for finding specific shows
+- Tracking watched shows
 
 ## Architecture:
 - Built on ASP.NET core MVC and Identity
@@ -62,7 +63,7 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 
 ## Planned future features:
   - User specific ratings for shows and episodes
-  - Tracking watched shows and episodes
+  - Tracking watched episodes
   - Sorting shows by categories, popularity, rating etc.
   - A home menu screen
   - Improving the UI (focus on Identity (Account Management Screen) and Watchlist screen)
@@ -96,6 +97,7 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 - Kan lägga till en serie till användarens personliga lista av serier som de vill kolla på, som sedan förvaras i PostgreSQL databasen.
 - Funktionalitet för att kunna visa alla epsioder för en viss serie.
 - Sökfunktionalitet för att hitta specifika serier
+- Kunna hålla koll på vilka serier man sett
 
 ## Arkitektur:
 - Byggt med ASP.NET core MVC och Identity som bas
@@ -133,7 +135,7 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 
 ## Planerade funktioner att lägga till:
   - Användarspecifika betyg för serier och episoder
-  - Hålla koll på vilka serier man sett, samt episoder
+  - Hålla koll på vilka episoder man sett av en viss serie
   - Sortera serier via kategori, popularitet, betyg, etc.
   - En vy för hem-skärmen
   - Förbättra gränssnittet (med fokus på Identity (användarhanteringsskärmen) och vyn för listan av serier man sett)
