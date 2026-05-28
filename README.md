@@ -4,11 +4,9 @@
 This is an ongoing project for a web-application that can be used to track TV-shows, with the goal of having a user that is able to 
 rate, review, and keep track of which shows and episodes they have watched or are watching, as well as those they want to watch in the future.
 
-<img width="1917" height="989" alt="Screenshot 2026-05-22 123055" src="https://github.com/user-attachments/assets/12ef1073-060e-4111-9e82-49c799a4759c" />
+<img width="1919" height="992" alt="Screenshot 2026-05-28 203853" src="https://github.com/user-attachments/assets/7c2772b1-fcaa-46ac-9e7a-58beef0efe3f" />
 <br>
-<img width="1919" height="990" alt="Screenshot 2026-05-27 120043" src="https://github.com/user-attachments/assets/90105ca2-7177-4732-978e-a958a6a4d945" />
-
-
+<img width="1917" height="992" alt="Screenshot 2026-05-28 203918" src="https://github.com/user-attachments/assets/b8b8e085-f23d-4681-a9c7-946359e6a791" />
 
 ## Tech stack includes:
 - C# / .NET 10
@@ -78,9 +76,9 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 Detta är ett pågående projekt för en webb-applikation som är tänkt till att användas för att man som en användare ska kunna hålla
 reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att kunna ge betyg och recensioner.
 
-<img width="1917" height="989" alt="Screenshot 2026-05-22 123055" src="https://github.com/user-attachments/assets/12ef1073-060e-4111-9e82-49c799a4759c" />
+<img width="1919" height="992" alt="Screenshot 2026-05-28 203853" src="https://github.com/user-attachments/assets/7c2772b1-fcaa-46ac-9e7a-58beef0efe3f" />
 <br>
-<img width="1919" height="990" alt="Screenshot 2026-05-27 120043" src="https://github.com/user-attachments/assets/90105ca2-7177-4732-978e-a958a6a4d945" />
+<img width="1917" height="992" alt="Screenshot 2026-05-28 203918" src="https://github.com/user-attachments/assets/b8b8e085-f23d-4681-a9c7-946359e6a791" />
 
 ## Teknikstack:
 - C# / .NET 10
