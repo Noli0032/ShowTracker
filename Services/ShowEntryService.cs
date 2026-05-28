@@ -24,7 +24,7 @@ public class ShowEntryService : IShowEntryService
 
         // Check if a show entry already exists for this user on this show
         var showEntry = await _context.UserShowEntries
-            .SingleOrDefaultAsync(e => e.UserId == userId && e.TvMazeShowId == tvMazeShowId);
+            .SingleOrDefaultAsync(entry => entry.UserId == userId && entry.TvMazeShowId == tvMazeShowId);
 
         // No show entry exists, create one
         if(showEntry == null)
