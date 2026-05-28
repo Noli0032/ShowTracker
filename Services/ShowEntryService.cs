@@ -59,10 +59,18 @@ public class ShowEntryService : IShowEntryService
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<UserShowEntry>> GetWatchListAsync(string userId)
+    public async Task<List<UserShowEntry>> GetWatchlistAsync(string userId)
     {
         return await _context.UserShowEntries
         .Where(entry => entry.UserId == userId && entry.Status == ShowStatus.Watchlist)
+        .Include(entry => entry.CachedShow)
+        .ToListAsync();
+    }
+
+    public async Task<List<UserShowEntry>> GetWatchedAsync(string userId)
+    {
+        return await _context.UserShowEntries
+        .Where(entry => entry.UserId == userId && entry.Status == ShowStatus.Watched)
         .Include(entry => entry.CachedShow)
         .ToListAsync();
     }

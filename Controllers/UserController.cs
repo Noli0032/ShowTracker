@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using MyProject.Areas.Identity.Data;
 using MyProject.Models.UserShow;
 using MyProject.Services;
@@ -24,7 +23,16 @@ public class UserController : Controller
     {
         // Since we have the authorize attribute, we should be certain that this is not null
         string userId = _userManager.GetUserId(User)!;
-        List<UserShowEntry> watchlist = await _showEntryService.GetWatchListAsync(userId);
+        List<UserShowEntry> watchlist = await _showEntryService.GetWatchlistAsync(userId);
         return View(watchlist);
+    }
+
+    [Authorize]
+    public async Task<IActionResult> Watched()
+    {
+        // Since we have the authorize attribute, we should be certain that this is not null
+        string userId = _userManager.GetUserId(User)!;
+        List<UserShowEntry> watched = await _showEntryService.GetWatchedAsync(userId);
+        return View(watched);
     }
 }
