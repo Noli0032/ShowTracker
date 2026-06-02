@@ -1,4 +1,4 @@
-namespace MyProject.Models;
+namespace ShowTracker.Models;
 
 public record TvShowImage
 {

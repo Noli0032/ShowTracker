@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using MyProject.Areas.Identity.Data;
-using MyProject.Services;
+using ShowTracker.Areas.Identity.Data;
+using ShowTracker.Services;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");;
 

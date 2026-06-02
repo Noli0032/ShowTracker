@@ -1,5 +1,5 @@
-using MyProject.Models;
-namespace MyProject.Services;
+using ShowTracker.Models;
+namespace ShowTracker.Services;
 
 public interface ITvMazeService
 {

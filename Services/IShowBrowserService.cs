@@ -1,6 +1,6 @@
-using MyProject.Models;
+using ShowTracker.Models;
 
-namespace MyProject.Services;
+namespace ShowTracker.Services;
 
 public interface IShowBrowserService
 {

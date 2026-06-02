@@ -1,4 +1,4 @@
-namespace MyProject.Models.UserShow;
+namespace ShowTracker.Models.UserShow;
 
 public enum ShowStatus
 {

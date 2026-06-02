@@ -18,9 +18,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using MyProject.Areas.Identity.Data;
+using ShowTracker.Areas.Identity.Data;
 
-namespace MyProject.Areas.Identity.Pages.Account
+namespace ShowTracker.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {

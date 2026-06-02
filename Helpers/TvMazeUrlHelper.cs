@@ -1,4 +1,4 @@
-namespace MyProject.Helpers;
+namespace ShowTracker.Helpers;
 
 public static class TvMazeUrlHelper
 {

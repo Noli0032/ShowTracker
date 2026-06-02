@@ -1,8 +1,8 @@
-namespace MyProject.Models.UserShow;
+namespace ShowTracker.Models.UserShow;
 
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
-using MyProject.Areas.Identity.Data;
+using ShowTracker.Areas.Identity.Data;
 
 [PrimaryKey(nameof(UserId), nameof(TvMazeShowId))]
 public class UserShowEntry

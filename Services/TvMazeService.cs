@@ -1,7 +1,7 @@
 using System.Text.Json;
-using MyProject.Models;
+using ShowTracker.Models;
 
-namespace MyProject.Services;
+namespace ShowTracker.Services;
 
 public sealed class TvMazeService : ITvMazeService
 {

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MyProject.Migrations
+namespace ShowTracker.Migrations
 {
     /// <inheritdoc />
     public partial class UpdateUserShowEntryNavigation : Migration

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace MyProject.Models.UserShow;
+namespace ShowTracker.Models.UserShow;
 
 public class CachedShow
 {

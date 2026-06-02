@@ -1,7 +1,7 @@
-using MyProject.Models;
-using MyProject.Models.UserShow;
+using ShowTracker.Models;
+using ShowTracker.Models.UserShow;
 
-namespace MyProject.ViewModels;
+namespace ShowTracker.ViewModels;
 
 public class ShowDetailsViewModel
 {

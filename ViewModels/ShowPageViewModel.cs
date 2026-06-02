@@ -1,5 +1,5 @@
-namespace MyProject.ViewModels;
-using MyProject.Models;
+namespace ShowTracker.ViewModels;
+using ShowTracker.Models;
 
 public class ShowPageViewModel
 {

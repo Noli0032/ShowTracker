@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MyProject.Areas.Identity.Data;
-using MyProject.Models;
-using MyProject.Models.UserShow;
-using MyProject.Services;
-using MyProject.ViewModels;
+using ShowTracker.Areas.Identity.Data;
+using ShowTracker.Models;
+using ShowTracker.Models.UserShow;
+using ShowTracker.Services;
+using ShowTracker.ViewModels;
 
-namespace MyProject.Controllers;
+namespace ShowTracker.Controllers;
 
 public class ShowsController : Controller
 {

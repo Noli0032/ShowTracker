@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyProject.Areas.Identity.Data;
+using ShowTracker.Areas.Identity.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MyProject.Migrations
+namespace ShowTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20260427123149_CreateIdentitySchema")]

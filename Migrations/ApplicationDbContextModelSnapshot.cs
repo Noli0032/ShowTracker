@@ -3,12 +3,12 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyProject.Areas.Identity.Data;
+using ShowTracker.Areas.Identity.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MyProject.Migrations
+namespace ShowTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -158,7 +158,7 @@ namespace MyProject.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("MyProject.Areas.Identity.Data.ApplicationUser", b =>
+            modelBuilder.Entity("ShowTracker.Areas.Identity.Data.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
@@ -222,7 +222,7 @@ namespace MyProject.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("MyProject.Models.UserShow.CachedShow", b =>
+            modelBuilder.Entity("ShowTracker.Models.UserShow.CachedShow", b =>
                 {
                     b.Property<int>("TvMazeShowId")
                         .ValueGeneratedOnAdd()
@@ -245,7 +245,7 @@ namespace MyProject.Migrations
                     b.ToTable("CachedShow");
                 });
 
-            modelBuilder.Entity("MyProject.Models.UserShow.UserShowEntry", b =>
+            modelBuilder.Entity("ShowTracker.Models.UserShow.UserShowEntry", b =>
                 {
                     b.Property<string>("UserId")
                         .HasColumnType("text");
@@ -286,7 +286,7 @@ namespace MyProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("MyProject.Areas.Identity.Data.ApplicationUser", null)
+                    b.HasOne("ShowTracker.Areas.Identity.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -295,7 +295,7 @@ namespace MyProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("MyProject.Areas.Identity.Data.ApplicationUser", null)
+                    b.HasOne("ShowTracker.Areas.Identity.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -310,7 +310,7 @@ namespace MyProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyProject.Areas.Identity.Data.ApplicationUser", null)
+                    b.HasOne("ShowTracker.Areas.Identity.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -319,22 +319,22 @@ namespace MyProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("MyProject.Areas.Identity.Data.ApplicationUser", null)
+                    b.HasOne("ShowTracker.Areas.Identity.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MyProject.Models.UserShow.UserShowEntry", b =>
+            modelBuilder.Entity("ShowTracker.Models.UserShow.UserShowEntry", b =>
                 {
-                    b.HasOne("MyProject.Models.UserShow.CachedShow", "CachedShow")
+                    b.HasOne("ShowTracker.Models.UserShow.CachedShow", "CachedShow")
                         .WithMany()
                         .HasForeignKey("TvMazeShowId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyProject.Areas.Identity.Data.ApplicationUser", "User")
+                    b.HasOne("ShowTracker.Areas.Identity.Data.ApplicationUser", "User")
                         .WithMany("UserShowEntries")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -345,7 +345,7 @@ namespace MyProject.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MyProject.Areas.Identity.Data.ApplicationUser", b =>
+            modelBuilder.Entity("ShowTracker.Areas.Identity.Data.ApplicationUser", b =>
                 {
                     b.Navigation("UserShowEntries");
                 });

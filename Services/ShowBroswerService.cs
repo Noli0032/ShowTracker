@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Caching.Memory;
-using MyProject.Models;
+using ShowTracker.Models;
 
-namespace MyProject.Services;
+namespace ShowTracker.Services;
 
 public class ShowBrowserService : IShowBrowserService
 {

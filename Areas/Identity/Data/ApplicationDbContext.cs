@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MyProject.Models.UserShow;
+using ShowTracker.Models.UserShow;
 
-namespace MyProject.Areas.Identity.Data;
+namespace ShowTracker.Areas.Identity.Data;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {

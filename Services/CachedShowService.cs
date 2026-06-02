@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using MyProject.Areas.Identity.Data;
-using MyProject.Models;
-using MyProject.Models.UserShow;
+using ShowTracker.Areas.Identity.Data;
+using ShowTracker.Models;
+using ShowTracker.Models.UserShow;
 
-namespace MyProject.Services;
+namespace ShowTracker.Services;
 
 public class CachedShowService : ICachedShowService
 {

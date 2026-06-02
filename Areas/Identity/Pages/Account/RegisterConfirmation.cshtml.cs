@@ -11,9 +11,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using MyProject.Areas.Identity.Data;
+using ShowTracker.Areas.Identity.Data;
 
-namespace MyProject.Areas.Identity.Pages.Account
+namespace ShowTracker.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterConfirmationModel : PageModel

@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using MyProject.Areas.Identity.Data;
-using MyProject.Models.UserShow;
+using ShowTracker.Areas.Identity.Data;
+using ShowTracker.Models.UserShow;
 
-namespace MyProject.Services;
+namespace ShowTracker.Services;
 
 public class ShowEntryService : IShowEntryService
 {

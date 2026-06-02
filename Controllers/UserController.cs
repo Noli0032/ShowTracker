@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MyProject.Areas.Identity.Data;
-using MyProject.Models.UserShow;
-using MyProject.Services;
+using ShowTracker.Areas.Identity.Data;
+using ShowTracker.Models.UserShow;
+using ShowTracker.Services;
 
-namespace MyProject.Controllers;
+namespace ShowTracker.Controllers;
 
 public class UserController : Controller
 {

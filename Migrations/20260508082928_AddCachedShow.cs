@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MyProject.Migrations
+namespace ShowTracker.Migrations
 {
     /// <inheritdoc />
     public partial class AddCachedShow : Migration

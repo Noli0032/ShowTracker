@@ -1,6 +1,6 @@
-using MyProject.Models.UserShow;
+using ShowTracker.Models.UserShow;
 
-namespace MyProject.Services;
+namespace ShowTracker.Services;
 public interface IShowEntryService
 {
     Task UpsertShowEntryAsync(string userId, int tvMazeShowId, ShowStatus showStatus);
