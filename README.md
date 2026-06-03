@@ -48,6 +48,7 @@ rate, review, and keep track of which shows and episodes they have watched or ar
   - Create a dedicated user with access to that database
 3. Configure user secrets
     ```
+    cd src/ShowTracker
     dotnet user-secrets init
     dotnet user-secrets set "ConnectionStrings:ApplicationDbContextConnection" "Host=localhost;Port=5432;Database=myprojectdb;Username=your_db_username;Password=your_db_password"
     ```
@@ -120,6 +121,7 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
   - Skapa en dedikerad användare som har tillgång till den databasen
 3. Konfigurera User Secrets/användarhemligheter
     ```
+    cd src/ShowTracker
     dotnet user-secrets init
     dotnet user-secrets set "ConnectionStrings:ApplicationDbContextConnection" "Host=localhost;Port=5432;Database=myprojectdb;Username=your_db_username;Password=your_db_password"
     ```
