@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Text.Json;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Logging.Abstractions;
 using ShowTracker.Models;
 using ShowTracker.Services;
@@ -26,6 +27,19 @@ public sealed class TvMazeServiceTests
         return new TvMazeService(httpClient, logger);
     }
 
+    private static TvMazeService CreateService(HttpStatusCode statusCode)
+    {
+        var response = new HttpResponseMessage(statusCode);
+        
+        var httpClient = new HttpClient(new FakeHttpMessageHandler(response))
+        {
+          BaseAddress = new Uri("https://api.tvmaze.com")
+        };
+
+        var logger = NullLogger<TvMazeService>.Instance;
+        return new TvMazeService(httpClient, logger);
+    }
+
     [TestMethod]
     public async Task GetTvShowsByPageAsync_WhenApiRespondsWithData_ReturnsShows()
     {
@@ -45,10 +59,23 @@ public sealed class TvMazeServiceTests
     }
 
     [TestMethod]
-    public async Task GetTvShowsByPageAsync_WhenApiRespondsWithNull_ReturnEmptyArray()
+    public async Task GetTvShowsByPageAsync_WhenApiRespondsWithNull_ReturnsEmptyArray()
     {
         // Arrange
         var service = CreateService("null");
+
+        // Act
+        var result = await service.GetTvShowsByPageAsync(1);
+
+        // Assert
+        Assert.IsEmpty(result);
+    }
+
+    [TestMethod]
+    public async Task GetTvShowsByPageAsync_WhenApiFails_ReturnsEmptyArray()
+    {
+        // Arrange
+        var service = CreateService(HttpStatusCode.InternalServerError);
 
         // Act
         var result = await service.GetTvShowsByPageAsync(1);
