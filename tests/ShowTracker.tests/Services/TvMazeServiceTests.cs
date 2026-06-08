@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using System.Text.Json;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Logging.Abstractions;
 using ShowTracker.Models;
 using ShowTracker.Services;
@@ -82,5 +81,25 @@ public sealed class TvMazeServiceTests
 
         // Assert
         Assert.IsEmpty(result);
+    }
+
+    [TestMethod]
+    public async Task GetTvShowDetailsAsync_WhenApiRespondsWithData_ReturnsShow()
+    {
+        // Arrange
+        var json = JsonSerializer.Serialize(new TvShow
+        {
+            Name = "Breaking Bad",
+            Language = "English",
+            Status = "Ended"
+        });
+        var service = CreateService(json);
+
+        // Act
+        var result = await service.GetTvShowDetailsAsync(1);
+
+        // Assert
+        Assert.IsNotNull(result);
+        Assert.AreEqual("Breaking Bad", result.Name);
     }
 }
