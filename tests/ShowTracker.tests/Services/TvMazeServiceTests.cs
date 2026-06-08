@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using ShowTracker.Models;
 using ShowTracker.Services;
 using ShowTracker.Tests.Helpers;
@@ -129,6 +130,42 @@ public sealed class TvMazeServiceTests
 
         // Act
         var result = await service.GetTvShowEpisodesAsync(1);
+
+        // Assert
+        Assert.HasCount(2, result);
+    }
+
+    [TestMethod]
+    public async Task SearchTvShowsAsync_WhenApiRespondsWithData_ReturnsShows()
+    {
+        // Arrange
+        var show1 = new TvShow
+        {
+            Id = 1, 
+            Name = "Breaking Bad", 
+            Language = "English", 
+            Status = "Ended",
+            Image = new TvShowImage {Medium = "http://img.com/1.jpg"}
+        };
+
+        var show2 = new TvShow
+        {
+            Id = 2, 
+            Name = "Breaking Bad Extras", 
+            Language = "English", 
+            Status = "Ended",
+            Image = new TvShowImage {Medium = "http://img.com/2.jpg"}
+        };
+
+        var json = JsonSerializer.Serialize(new []
+        {
+           new WrappedTvShow {Score = 9, Show = show1},  
+           new WrappedTvShow {Score = 8, Show = show2}
+        });
+        var service = CreateService(json);
+
+        // Act
+        var result = await service.SearchTvShowsAsync("Breaking Bad");
 
         // Assert
         Assert.HasCount(2, result);
