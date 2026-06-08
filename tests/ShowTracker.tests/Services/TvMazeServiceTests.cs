@@ -106,7 +106,31 @@ public sealed class TvMazeServiceTests
     [TestMethod]
     public async Task GetTvShowDetailsAsync_WhenApiFails_ReturnsNull()
     {
+        // Arrange
+        var service = CreateService(HttpStatusCode.InternalServerError);
 
+        // Act
+        var result = await service.GetTvShowDetailsAsync(1);
+
+        // Assert
+        Assert.IsNull(result);
     }
 
+    [TestMethod]
+    public async Task GetTvShowEpisodesAsync_WhenApiRespondsWithData_ReturnsEpisodes()
+    {
+        // Arrange
+        var json = JsonSerializer.Serialize(new []
+        {
+            new TvShowEpisode {Id = 1, Name = "Ozymandias", Season = 5, Number = 14},
+            new TvShowEpisode {Id = 2, Name = "Fly", Season = 3, Number = 10}
+        });
+        var service = CreateService(json);
+
+        // Act
+        var result = await service.GetTvShowEpisodesAsync(1);
+
+        // Assert
+        Assert.HasCount(2, result);
+    }
 }
