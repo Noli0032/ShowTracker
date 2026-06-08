@@ -43,4 +43,17 @@ public sealed class TvMazeServiceTests
         // Assert
         Assert.HasCount(2, result);
     }
+
+    [TestMethod]
+    public async Task GetTvShowsByPageAsync_WhenApiRespondsWithNull_ReturnEmptyArray()
+    {
+        // Arrange
+        var service = CreateService("null");
+
+        // Act
+        var result = await service.GetTvShowsByPageAsync(1);
+
+        // Assert
+        Assert.IsEmpty(result);
+    }
 }
