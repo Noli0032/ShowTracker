@@ -170,4 +170,40 @@ public sealed class TvMazeServiceTests
         // Assert
         Assert.HasCount(2, result);
     }
+
+    [TestMethod]
+    public async Task SearchTvShowsAsync_WhenSomeShowsLackImages_ReturnsOnlyShowsWithImages()
+    {
+        // Arrange
+        var show1 = new TvShow
+        {
+            Id = 1, 
+            Name = "Breaking Bad", 
+            Language = "English", 
+            Status = "Ended",
+            Image = new TvShowImage {Medium = "http://img.com/1.jpg"}
+        };
+
+        var show2 = new TvShow
+        {
+            Id = 2, 
+            Name = "Breaking Bad Extras", 
+            Language = "English", 
+            Status = "Ended",
+        };
+
+        var json = JsonSerializer.Serialize(new []
+        {
+           new WrappedTvShow {Score = 9, Show = show1},  
+           new WrappedTvShow {Score = 8, Show = show2}
+        });
+        var service = CreateService(json);
+
+        // Act
+        var result = await service.SearchTvShowsAsync("Breaking Bad");
+
+        // Assert
+        Assert.HasCount(1, result);
+        Assert.AreEqual("Breaking Bad", result[0].Name);
+    }
 }
