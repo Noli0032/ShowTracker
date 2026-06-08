@@ -102,4 +102,11 @@ public sealed class TvMazeServiceTests
         Assert.IsNotNull(result);
         Assert.AreEqual("Breaking Bad", result.Name);
     }
+
+    [TestMethod]
+    public async Task GetTvShowDetailsAsync_WhenApiFails_ReturnsNull()
+    {
+
+    }
+
 }
