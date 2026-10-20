@@ -18,13 +18,14 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 - TVMaze API
 
 ## Implemented features so far (Aside from the account features included in Identity):
-- User registration and login with username or email.
-- Functionality for being able to view multiple pages of shows, fetched from the online TVMaze API.
-- A details view with fetched information about any given show, which shows up when it is clicked.
-- Adding the show to a user's personal watchlist, which is stored in a PostgreSQL database.
-- Functionality for viewing all episodes available for a specific show.
+- User registration and login with username or email
+- Functionality for being able to view multiple pages of shows, fetched from the online TVMaze API
+- A details view with fetched information about any given show, which shows up when it is clicked
+- Adding the show to a user's personal watchlist, which is stored in a PostgreSQL database
+- Functionality for viewing all episodes available for a specific show
 - Search functionality for finding specific shows
 - Tracking watched shows
+- A home page with scrollable rows of shows: most popular, highest rated, and new & running
 
 ## Architecture:
 - Built on ASP.NET core MVC and Identity
@@ -65,7 +66,6 @@ rate, review, and keep track of which shows and episodes they have watched or ar
   - User specific ratings for shows and episodes
   - Tracking watched episodes
   - Sorting shows by categories, popularity, rating etc.
-  - A home menu screen
   - Improving the UI (focus on Identity (Account Management Screen) and Watchlist screen)
 
 ---
@@ -91,13 +91,14 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
 - TVMaze API
 
 ## Implementerade funktioner hittills (förutom de användar-funktioner som ingår i Identity):
-- Användarregistrering och inloggning med användarnamn eller email.
-- Funktionalitet för att kunna bläddra mellan sidor av serier, hämtade från TVMaze API.
-- En detalj vy som visar hämtad information om vilken serie som helst som visas på vyn om man klickar på den.
-- Kan lägga till en serie till användarens personliga lista av serier som de vill kolla på, som sedan förvaras i PostgreSQL databasen.
-- Funktionalitet för att kunna visa alla epsioder för en viss serie.
+- Användarregistrering och inloggning med användarnamn eller email
+- Funktionalitet för att kunna bläddra mellan sidor av serier, hämtade från TVMaze API
+- En detalj vy som visar hämtad information om vilken serie som helst som visas på vyn om man klickar på den
+- Kan lägga till en serie till användarens personliga lista av serier som de vill kolla på, som sedan förvaras i PostgreSQL databasen
+- Funktionalitet för att kunna visa alla epsioder för en viss serie
 - Sökfunktionalitet för att hitta specifika serier
 - Kunna hålla koll på vilka serier man sett
+- En startsida som visar serier som tillhör olika kategorier: mest populära, högst betyg och nya serier som visas just nu
 
 ## Arkitektur:
 - Byggt med ASP.NET core MVC och Identity som bas
@@ -138,6 +139,5 @@ reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att ku
   - Användarspecifika betyg för serier och episoder
   - Hålla koll på vilka episoder man sett av en viss serie
   - Sortera serier via kategori, popularitet, betyg, etc.
-  - En vy för hem-skärmen
   - Förbättra gränssnittet (med fokus på Identity (användarhanteringsskärmen) och vyn för listan av serier man sett)
 </details>
