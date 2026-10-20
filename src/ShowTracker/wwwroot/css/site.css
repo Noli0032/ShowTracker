@@ -71,6 +71,20 @@ body {
   transition: border-color 0.2s ease;
 }
 
+.show-rail {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x proximity;
+}
+
+.show-rail-item {
+  flex: 0 0 150px;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
 .nav-tabs .nav-link {
   color: #A9A9A9;
   cursor: pointer;

@@ -1,7 +1,12 @@
-﻿@{
+﻿@using ShowTracker.ViewModels
+@model HomePageViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to your ShowTracker</h1>
+<div class="mt-3">
+    <partial name="_ShowRow" model='("Most popular", Model.MostPopular)' />
+    <partial name="_ShowRow" model='("Highest rated", Model.HighestRated)' />
+    <partial name="_ShowRow" model='("New & running", Model.NewAndRunning)' />
 </div>
