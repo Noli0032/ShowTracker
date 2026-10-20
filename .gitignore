@@ -5,6 +5,7 @@
 
 appsettings.Development.json
 ShowTracker.csproj.lscache
+.claude
 
 # dotenv files
 .env
