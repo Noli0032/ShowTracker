@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShowTracker.tests", "ShowTracker.tests", "{76E8B74E-FE75-D1A2-F8AC-D3310EA3F197}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowTracker.Tests", "tests\ShowTracker.tests\ShowTracker.Tests.csproj", "{FB77E841-E2C6-4A3A-9641-A2250A06575B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowTracker.Tests", "tests\ShowTracker.tests\ShowTracker.tests.csproj", "{FB77E841-E2C6-4A3A-9641-A2250A06575B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
