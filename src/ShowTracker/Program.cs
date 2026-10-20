@@ -26,6 +26,8 @@ builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IShowBrowserService, ShowBrowserService>();
 
+builder.Services.AddScoped<IHomeService, HomeService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
