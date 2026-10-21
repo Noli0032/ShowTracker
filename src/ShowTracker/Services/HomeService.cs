@@ -12,7 +12,7 @@ public class HomeService : IHomeService
     // The first pages hold the oldest shows, which have the most complete weight and rating data
     private const int SampledPages = 6;
     // New shows sit on the last pages of the TvMaze show index
-    private const int NewestPages = 3;
+    private const int NewestPages = 6;
     // The index has around 380 pages. The last page is found by walking up from this page
     private const int LastPageSearchStart = 340;
     private const int LastPageSearchStep = 10;
@@ -76,6 +76,7 @@ public class HomeService : IHomeService
         }
 
         var sampledWithImage = sampledShows.Where(HasImage).ToList();
+        var today = DateOnly.FromDateTime(DateTime.UtcNow);
 
         return new HomePageViewModel
         {
@@ -89,10 +90,12 @@ public class HomeService : IHomeService
                 .OrderByDescending(show => show.Rating!.Average)
                 .Take(RowSize)
                 .ToArray(),
-            // New shows often have no rating yet, so only an image is required
+            // New shows often have no rating yet, so only an image is required.
+            // TvMaze marks shows as running before they premiere, so upcoming premieres are left out
             NewAndRunning = newestShows
                 .Where(HasImage)
                 .Where(show => show.Status == "Running")
+                .Where(show => show.Premiered != null && show.Premiered <= today)
                 .OrderByDescending(show => show.Premiered)
                 .Take(RowSize)
                 .ToArray()

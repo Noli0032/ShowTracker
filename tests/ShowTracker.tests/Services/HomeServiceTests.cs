@@ -8,6 +8,8 @@ namespace ShowTracker.tests;
 [TestClass]
 public sealed class HomeServiceTests
 {
+    private static DateOnly Today => DateOnly.FromDateTime(DateTime.UtcNow);
+
     private static HomeService CreateService(Func<int, TvShow[]> pageProvider, out Mock<ITvMazeService> tvMazeMock)
     {
         tvMazeMock = new Mock<ITvMazeService>();
@@ -134,12 +136,32 @@ public sealed class HomeServiceTests
     }
 
     [TestMethod]
+    public async Task GetHomePageAsync_NewAndRunning_ExcludesShowsThatHaveNotPremieredYet()
+    {
+        // Arrange
+        var newest = new[]
+        {
+            CreateShow(1, "Upcoming", status: "Running", premiered: Today.AddDays(5)),
+            CreateShow(2, "Premiered", status: "Running", premiered: Today.AddDays(-5)),
+            CreateShow(3, "No date", status: "Running", premiered: null)
+        };
+        var service = CreateService(CreateIndex([], newest), out _);
+
+        // Act
+        var result = await service.GetHomePageAsync();
+
+        // Assert
+        Assert.HasCount(1, result.NewAndRunning);
+        Assert.AreEqual("Premiered", result.NewAndRunning[0].Name);
+    }
+
+    [TestMethod]
     public async Task GetHomePageAsync_WhenIndexHasGrown_FindsNewestShowsOnTheLastPage()
     {
         // Arrange
         var newest = new[]
         {
-            CreateShow(1, "Brand new", status: "Running", premiered: new DateOnly(2026, 1, 1))
+            CreateShow(1, "Brand new", status: "Running", premiered: Today.AddDays(-7))
         };
         var service = CreateService(CreateIndex([], newest, lastPage: 357), out _);
 
