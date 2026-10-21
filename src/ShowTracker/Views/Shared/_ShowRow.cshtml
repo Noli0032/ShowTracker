@@ -1,0 +1,26 @@
+@using System.Globalization
+@model (string Title, TvShow[] Shows)
+
+@if (Model.Shows.Length > 0)
+{
+    <section class="mb-4">
+        <h2 class="h4 mb-2">@Model.Title</h2>
+        <div class="show-rail">
+            @foreach (var show in Model.Shows)
+            {
+                <a class="show-rail-item text-decoration-none" asp-controller="Shows" asp-action="Details" asp-route-id="@show.Id">
+                    <div class="card bg-dark card-hoverable">
+                        <img class="card-img-top img-fluid rounded" src="@show.Image?.Medium" alt="@show.Name" loading="lazy" />
+                    </div>
+                    <div class="text-truncate text-white mt-1" title="@show.Name">@show.Name</div>
+                    @if (show.Rating?.Average != null)
+                    {
+                        <div class="small text-secondary">
+                            <i class="bi bi-star-fill"></i> @show.Rating.Average.Value.ToString("0.0", CultureInfo.InvariantCulture)
+                        </div>
+                    }
+                </a>
+            }
+        </div>
+    </section>
+}

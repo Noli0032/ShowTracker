@@ -12,4 +12,5 @@ public record TvShow
     public TvShowRating? Rating {get; init;}
     public TvShowImage? Image {get; init;}
     public string? Summary {get; init;}
+    public int? Weight {get; init;}
 }
