@@ -80,13 +80,33 @@ html {
   max-width: 400px;
 }
 
-.btn:focus-visible, .btn:active:focus-visible, .btn-link.nav-link:focus-visible, .form-check-input:focus {
+.btn:focus-visible, .btn:active:focus-visible, .nav-link:focus-visible, .form-check-input:focus {
   box-shadow: 0 0 0 0.2rem var(--st-focus-ring);
 }
 
-.form-control:focus {
+.form-control, .form-select {
+  background-color: var(--st-surface);
+  border-color: var(--st-border-strong);
+}
+
+.input-group-text {
+  background-color: var(--st-surface-2);
+  border-color: var(--st-border-strong);
+}
+
+.form-control:focus, .form-select:focus, .form-check-input:focus {
   border-color: var(--st-border-hover);
   box-shadow: 0 0 0 0.2rem var(--st-focus-ring);
+}
+
+.form-check-input {
+  background-color: var(--st-surface);
+  border-color: var(--st-border-hover);
+}
+
+.form-check-input:checked {
+  background-color: var(--st-elevated-hover);
+  border-color: var(--st-border-hover);
 }
 
 .btn-primary {
