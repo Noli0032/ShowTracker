@@ -4,31 +4,37 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-<ul class="navbar-nav">
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+    bool IsActive(string name) => string.Equals(controller, "User", StringComparison.OrdinalIgnoreCase)
+        && string.Equals(action, name, StringComparison.OrdinalIgnoreCase);
+}
+<ul class="navbar-nav align-items-md-center">
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a class="nav-link text-white" asp-controller="User" asp-action="Watched">Watched</a>
+        <a class="nav-link@(IsActive("Watched") ? " active" : "")" aria-current="@(IsActive("Watched") ? "page" : null)" asp-controller="User" asp-action="Watched">Watched</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-white" asp-controller="User" asp-action="Watchlist">Watchlist</a>
+        <a class="nav-link@(IsActive("Watchlist") ? " active" : "")" aria-current="@(IsActive("Watchlist") ? "page" : null)" asp-controller="User" asp-action="Watchlist">Watchlist</a>
     </li>
     <li class="nav-item">
-        <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account</a>
+        <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account</a>
     </li>
     <li class="nav-item">
         <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button id="logout" type="submit" class="nav-link btn btn-link text-white border-0">Logout</button>
+            <button id="logout" type="submit" class="nav-link border-0 bg-transparent">Logout</button>
         </form>
     </li>
 }
 else
 {
     <li class="nav-item">
-        <a class="nav-link text-white" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        <a class="btn btn-sm btn-primary ms-md-2 my-1 my-md-0" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-white" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <a class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
 }
 </ul>
