@@ -126,15 +126,15 @@ html {
 }
 
 .btn-secondary {
-  --bs-btn-color: var(--st-text-muted);
+  --bs-btn-color: var(--st-text);
   --bs-btn-bg: var(--st-surface-2);
-  --bs-btn-border-color: var(--st-border);
-  --bs-btn-hover-color: var(--st-text);
+  --bs-btn-border-color: var(--st-border-strong);
+  --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: var(--st-elevated);
-  --bs-btn-hover-border-color: var(--st-border-strong);
-  --bs-btn-active-color: var(--st-text);
+  --bs-btn-hover-border-color: var(--st-border-hover);
+  --bs-btn-active-color: #fff;
   --bs-btn-active-bg: var(--st-elevated);
-  --bs-btn-active-border-color: var(--st-border-strong);
+  --bs-btn-active-border-color: var(--st-border-hover);
   --bs-btn-focus-shadow-rgb: 255, 255, 255;
   --bs-btn-disabled-color: var(--st-text-muted);
   --bs-btn-disabled-bg: var(--st-surface-2);
@@ -213,15 +213,49 @@ a:focus-visible .card-hoverable {
   color: var(--st-text);
 }
 
-.icon-btn {
-  color: white;
-  text-decoration: none;
+.show-poster-card {
+  max-width: 280px;
+  overflow: hidden;
 }
 
-.icon-btn:hover {
-  color: #A9A9A9;
+.show-poster {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background-color: var(--st-surface-2);
 }
 
-.icon-xl {
-  font-size: 3.5rem;
+.detail-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.detail-row > :last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.genre-pill {
+  color: var(--st-text);
+  background-color: var(--st-border-strong);
+  border: 1px solid var(--st-border-hover);
+  font-weight: 500;
+}
+
+.detail-label {
+  flex: 0 0 5.5rem;
+  color: var(--st-text-muted);
+}
+
+@media (min-width: 576px) {
+  .detail-label {
+    flex-basis: 7rem;
+  }
+}
+
+.btn-primary.active {
+  border-color: var(--st-text-muted);
+  box-shadow: inset 0 0 0 1px var(--st-text-muted);
 }

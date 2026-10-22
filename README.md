@@ -4,9 +4,11 @@
 This is an ongoing project for a web-application that can be used to track TV-shows, with the goal of having a user that is able to 
 rate, review, and keep track of which shows and episodes they have watched or are watching, as well as those they want to watch in the future.
 
-<img width="1919" height="992" alt="Screenshot 2026-10-21 110058" src="https://github.com/user-attachments/assets/2bc8a2b6-212b-49e3-b6e6-dd2dc100ff28" />
+<img width="1917" height="992" alt="Screenshot 2026-10-22 110004" src="https://github.com/user-attachments/assets/00f13f31-17d2-4470-ba0b-e92653f4bdfb" />
 <br>
-<img width="1917" height="992" alt="Screenshot 2026-05-28 203918" src="https://github.com/user-attachments/assets/b8b8e085-f23d-4681-a9c7-946359e6a791" />
+<img width="1917" height="992" alt="Screenshot 2026-10-22 110030" src="https://github.com/user-attachments/assets/fcd57dc9-d8fd-4f2c-85e9-1ae72fd2fb68" />
+<br>
+<img width="1917" height="992" alt="Screenshot 2026-10-22 110017" src="https://github.com/user-attachments/assets/84a11234-6042-4ed1-8a62-f4cb35c0fa10" />
 
 ## Tech stack includes:
 - C# / .NET 10
@@ -77,9 +79,11 @@ rate, review, and keep track of which shows and episodes they have watched or ar
 Detta är ett pågående projekt för en webb-applikation som är tänkt till att användas för att man som en användare ska kunna hålla
 reda på vilka serier man sett, ska kolla på, eller har kollat på, samt att kunna ge betyg och recensioner.
 
-<img width="1919" height="992" alt="Screenshot 2026-10-21 110058" src="https://github.com/user-attachments/assets/2bc8a2b6-212b-49e3-b6e6-dd2dc100ff28" />
+<img width="1917" height="992" alt="Screenshot 2026-10-22 110004" src="https://github.com/user-attachments/assets/00f13f31-17d2-4470-ba0b-e92653f4bdfb" />
 <br>
-<img width="1917" height="992" alt="Screenshot 2026-05-28 203918" src="https://github.com/user-attachments/assets/b8b8e085-f23d-4681-a9c7-946359e6a791" />
+<img width="1917" height="992" alt="Screenshot 2026-10-22 110030" src="https://github.com/user-attachments/assets/fcd57dc9-d8fd-4f2c-85e9-1ae72fd2fb68" />
+<br>
+<img width="1917" height="992" alt="Screenshot 2026-10-22 110017" src="https://github.com/user-attachments/assets/84a11234-6042-4ed1-8a62-f4cb35c0fa10" />
 
 ## Teknikstack:
 - C# / .NET 10
