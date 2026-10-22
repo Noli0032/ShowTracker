@@ -36,32 +36,42 @@
         </div>
         <div class="card">
             <div class="card-body d-grid gap-2">
-                @if (Model.ShowStatus == ShowStatus.Watched)
+                @if (SignInManager.IsSignedIn(User))
                 {
-                    <form asp-controller="Shows" asp-action="ShowEntryDelete" method="post">
+                    var isWatchlisted = Model.ShowStatus == ShowStatus.Watchlist;
+                    var isWatched = Model.ShowStatus == ShowStatus.Watched;
+                    <form asp-controller="Shows" asp-action="@(isWatchlisted ? "ShowEntryDelete" : "UpdateStatus")" method="post">
                         <input type="hidden" name="tvMazeShowId" value="@show.Id" />
-                        <button type="submit" class="btn btn-primary w-100">Watched</button>
+                        @if (!isWatchlisted)
+                        {
+                            <input type="hidden" name="showStatus" value="Watchlist" />
+                        }
+                        <button type="submit" class="btn btn-primary w-100@(isWatchlisted ? " active" : "")">
+                            <i class="bi @(isWatchlisted ? "bi-bookmark-check-fill" : "bi-bookmark-plus") me-1" aria-hidden="true"></i>
+                            @(isWatchlisted ? "On Watchlist" : "Add To Watchlist")
+                        </button>
+                    </form>
+                    <form asp-controller="Shows" asp-action="@(isWatched ? "ShowEntryDelete" : "UpdateStatus")" method="post">
+                        <input type="hidden" name="tvMazeShowId" value="@show.Id" />
+                        @if (!isWatched)
+                        {
+                            <input type="hidden" name="showStatus" value="Watched" />
+                        }
+                        <button type="submit" class="btn btn-primary w-100@(isWatched ? " active" : "")">
+                            <i class="bi @(isWatched ? "bi-eye-fill" : "bi-eye") me-1" aria-hidden="true"></i>
+                            @(isWatched ? "Watched" : "Mark As Watched")
+                        </button>
                     </form>
                 }
                 else
                 {
-                    <form asp-controller="Shows" asp-action="UpdateStatus" method="post">
-                        <input type="hidden" name="tvMazeShowId" value="@show.Id" />
-                        <input type="hidden" name="showStatus" value="Watched" />
-                        <button type="submit" class="btn btn-primary w-100">Mark As Watched</button>
-                    </form>
+                    <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("Details", "Shows", new { id = show.Id })">
+                        <i class="bi bi-box-arrow-in-right me-1" aria-hidden="true"></i> Log in to track this show
+                    </a>
                 }
-                <form asp-controller="Shows" asp-action="@(Model.ShowStatus == ShowStatus.Watchlist ? "ShowEntryDelete" : "UpdateStatus")" method="post">
-                    <input type="hidden" name="tvMazeShowId" value="@show.Id" />
-                    @if (Model.ShowStatus != ShowStatus.Watchlist)
-                    {
-                        <input type="hidden" name="showStatus" value="Watchlist" />
-                    }
-                    <button type="submit" class="btn btn-primary w-100">
-                        @(Model.ShowStatus == ShowStatus.Watchlist ? "Remove From Watchlist" : "Add To Watchlist")
-                    </button>
-                </form>
-                <a asp-controller="Shows" asp-action="Episodes" asp-route-id="@show.Id" class="btn btn-secondary">View Episodes</a>
+                <a asp-controller="Shows" asp-action="Episodes" asp-route-id="@show.Id" class="btn btn-primary">
+                    <i class="bi bi-list-ul me-1" aria-hidden="true"></i> View Episodes
+                </a>
             </div>
         </div>
     </div>
