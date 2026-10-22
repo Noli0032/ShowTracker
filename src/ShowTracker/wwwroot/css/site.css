@@ -213,15 +213,44 @@ a:focus-visible .card-hoverable {
   color: var(--st-text);
 }
 
-.icon-btn {
-  color: white;
-  text-decoration: none;
+.show-poster-card {
+  max-width: 280px;
+  overflow: hidden;
 }
 
-.icon-btn:hover {
-  color: #A9A9A9;
+.show-poster {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background-color: var(--st-surface-2);
 }
 
-.icon-xl {
-  font-size: 3.5rem;
+.detail-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.detail-row > :last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.genre-pill {
+  color: var(--st-text);
+  background-color: var(--st-border-strong);
+  border: 1px solid var(--st-border-hover);
+  font-weight: 500;
+}
+
+.detail-label {
+  flex: 0 0 5.5rem;
+  color: var(--st-text-muted);
+}
+
+@media (min-width: 576px) {
+  .detail-label {
+    flex-basis: 7rem;
+  }
 }

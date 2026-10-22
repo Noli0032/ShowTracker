@@ -1,71 +1,126 @@
+@using System.Globalization
 @using ShowTracker.Areas.Identity.Data
 @using ShowTracker.Models.UserShow
 @using ShowTracker.ViewModels
 @model ShowDetailsViewModel
 @inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> SignInManager;
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-3 text-center">
-            <div class="card bg-dark">
-                <img src="@Model.Show.Image?.Original"/>
-            </div>
-            <div class="mt-2">
-                @foreach (var genre in Model.Show.Genres) {
-                    <span class="badge text-bg-secondary">@genre</span>
-                }
-            </div>
-            @if(Model.ShowStatus == ShowStatus.Watched) 
+@{
+    var show = Model.Show;
+    ViewData["Title"] = show.Name;
+
+    string FormatDate(DateOnly? date) => date?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) ?? "";
+
+    var years = show.Premiered is { } premiered
+        ? show.Ended is { } ended ? $"{premiered.Year} – {ended.Year}"
+            : string.Equals(show.Status, "Running", StringComparison.OrdinalIgnoreCase) ? $"{premiered.Year} –"
+            : premiered.Year.ToString(CultureInfo.InvariantCulture)
+        : null;
+    var subtitle = string.Join(" · ", new[] { years, show.Status, show.Language }.Where(part => !string.IsNullOrWhiteSpace(part)));
+}
+
+<div class="row g-4">
+    <div class="col-md-4 col-lg-3">
+        <div class="card show-poster-card mx-auto mb-3">
+            @if (show.Image?.Original != null)
             {
-                <form asp-controller="Shows" asp-action="ShowEntryDelete" method="post">
-                    <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id" />
-                    <button type ="submit" class="btn icon-btn shadow-none border-0">
-                        <i class="bi bi-eye-fill icon-xl"></i>
-                        <div class="small">Watched</div>
-                    </button>
-                </form>
+                <img class="show-poster" src="@show.Image.Original" alt="Poster for @show.Name" />
             }
             else
             {
-                <form asp-controller="Shows" asp-action="UpdateStatus" method="post">
-                    <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id" />
-                    <input type="hidden" name="showStatus" value="Watched" />
-                    <button type ="submit" class="btn icon-btn shadow-none border-0">
-                        <i class="bi bi-eye icon-xl"></i>
-                        <div class="small">Watch</div>
-                    </button>
-                </form>
+                <div class="show-poster d-flex align-items-center justify-content-center text-body-secondary">
+                    <i class="bi bi-image fs-1" aria-hidden="true"></i>
+                    <span class="visually-hidden">No poster available for @show.Name</span>
+                </div>
             }
         </div>
-        <div class="col-md-5">
-            <div class="card bg-dark text-white">
-                <div class = "card-body">
-                    <h1 class="card-title border-bottom border-light pb-2">@Model.Show.Name</h1>
-                    @Html.Raw(HtmlSummaryHelper.Sanitize(Model.Show.Summary))
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item list-group-item-dark">Language: @Model.Show.Language</li>
-                    <li class="list-group-item list-group-item-dark">Status: @Model.Show.Status</li>
-                    <li class="list-group-item list-group-item-dark">Premiered: @Model.Show.Premiered</li>
-                    <li class="list-group-item list-group-item-dark">Ended: @(Model.Show.Ended?.ToString() ?? "Still Airing")</li>
-                    <li class="list-group-item list-group-item-dark">Average Rating: @Model.Show.Rating?.Average?.ToString().Replace(",", ".")</li>
-                </ul>
-            </div>
-            <div class="d-flex w-100">
-                <form asp-controller="Shows" asp-action="@(Model.ShowStatus == ShowStatus.Watchlist ? "ShowEntryDelete" : "UpdateStatus")" method="post" class="w-50">
-                    <input type="hidden" name="tvMazeShowId" value="@Model.Show.Id"/>
+        <div class="card">
+            <div class="card-body d-grid gap-2">
+                @if (Model.ShowStatus == ShowStatus.Watched)
+                {
+                    <form asp-controller="Shows" asp-action="ShowEntryDelete" method="post">
+                        <input type="hidden" name="tvMazeShowId" value="@show.Id" />
+                        <button type="submit" class="btn btn-primary w-100">Watched</button>
+                    </form>
+                }
+                else
+                {
+                    <form asp-controller="Shows" asp-action="UpdateStatus" method="post">
+                        <input type="hidden" name="tvMazeShowId" value="@show.Id" />
+                        <input type="hidden" name="showStatus" value="Watched" />
+                        <button type="submit" class="btn btn-primary w-100">Mark As Watched</button>
+                    </form>
+                }
+                <form asp-controller="Shows" asp-action="@(Model.ShowStatus == ShowStatus.Watchlist ? "ShowEntryDelete" : "UpdateStatus")" method="post">
+                    <input type="hidden" name="tvMazeShowId" value="@show.Id" />
                     @if (Model.ShowStatus != ShowStatus.Watchlist)
                     {
-                        <input type="hidden" name="showStatus" value="Watchlist"/>
+                        <input type="hidden" name="showStatus" value="Watchlist" />
                     }
-                    <button type="submit" class="w-100 btn btn-lg btn-primary mt-2">
+                    <button type="submit" class="btn btn-primary w-100">
                         @(Model.ShowStatus == ShowStatus.Watchlist ? "Remove From Watchlist" : "Add To Watchlist")
                     </button>
                 </form>
-                <a asp-controller="Shows" asp-action="Episodes" asp-route-id="@Model.Show.Id" class="flex-grow-1">
-                    <button type="button" class="w-100 btn btn-lg btn-primary mt-2">View Episodes</button>
-                </a>
+                <a asp-controller="Shows" asp-action="Episodes" asp-route-id="@show.Id" class="btn btn-secondary">View Episodes</a>
             </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-lg-9">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h1 class="card-title h2 mb-1">@show.Name</h1>
+                @if (subtitle.Length > 0)
+                {
+                    <div class="text-body-secondary mb-3">@subtitle</div>
+                }
+                @Html.Raw(HtmlSummaryHelper.Sanitize(show.Summary))
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">Details</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item list-group-item-dark detail-row">
+                    <span class="detail-label">Rating</span>
+                    <span>
+                        @if (show.Rating?.Average is { } rating)
+                        {
+                            <i class="bi bi-star-fill text-body-secondary me-1" aria-hidden="true"></i>@rating.ToString("0.0", CultureInfo.InvariantCulture)<span class="text-body-secondary"> / 10</span>
+                        }
+                        else
+                        {
+                            <span class="text-body-secondary">No rating</span>
+                        }
+                    </span>
+                </li>
+                @if (show.Genres is { Count: > 0 })
+                {
+                    <li class="list-group-item list-group-item-dark detail-row">
+                        <span class="detail-label">Genres</span>
+                        <span class="d-flex flex-wrap gap-1">
+                            @foreach (var genre in show.Genres)
+                            {
+                                <span class="badge rounded-pill genre-pill">@genre</span>
+                            }
+                        </span>
+                    </li>
+                }
+                <li class="list-group-item list-group-item-dark detail-row">
+                    <span class="detail-label">Language</span>
+                    <span>@(string.IsNullOrWhiteSpace(show.Language) ? "Unknown" : show.Language)</span>
+                </li>
+                <li class="list-group-item list-group-item-dark detail-row">
+                    <span class="detail-label">Status</span>
+                    <span>@(string.IsNullOrWhiteSpace(show.Status) ? "Unknown" : show.Status)</span>
+                </li>
+                <li class="list-group-item list-group-item-dark detail-row">
+                    <span class="detail-label">Premiered</span>
+                    <span>@(show.Premiered != null ? FormatDate(show.Premiered) : "Unknown")</span>
+                </li>
+                <li class="list-group-item list-group-item-dark detail-row">
+                    <span class="detail-label">Ended</span>
+                    <span>@(show.Ended != null ? FormatDate(show.Ended) : "Still Airing")</span>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
