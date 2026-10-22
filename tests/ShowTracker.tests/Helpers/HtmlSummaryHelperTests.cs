@@ -32,6 +32,43 @@ public class HtmlSummaryHelperTests
     }
 
     [TestMethod]
+    public void Sanitize_StripsLinksButKeepsLinkText()
+    {
+        var result = HtmlSummaryHelper.Sanitize("<p><a href=\"https://example.com\">link</a></p>");
+
+        Assert.AreEqual("<p>link</p>", result);
+    }
+
+    [TestMethod]
+    public void Sanitize_KeepsLineBreaksAndEmphasis()
+    {
+        var result = HtmlSummaryHelper.Sanitize("<p>One<br>two <em>three</em> <strong>four</strong></p>");
+
+        Assert.Contains("<br>", result);
+        Assert.Contains("<em>three</em>", result);
+        Assert.Contains("<strong>four</strong>", result);
+    }
+
+    [TestMethod]
+    [DataRow("<img src=x onerror=\"alert(1)\">")]
+    [DataRow("<svg onload=\"alert(1)\"></svg>")]
+    [DataRow("<iframe src=\"https://example.com\"></iframe>")]
+    [DataRow("<style>body { display: none }</style>")]
+    [DataRow("<scr<script>ipt>alert(1)</scr</script>ipt>")]
+    public void Sanitize_RemovesDangerousMarkup(string html)
+    {
+        var result = HtmlSummaryHelper.Sanitize(html);
+
+        Assert.DoesNotContain("<img", result);
+        Assert.DoesNotContain("<svg", result);
+        Assert.DoesNotContain("<iframe", result);
+        Assert.DoesNotContain("<style", result);
+        Assert.DoesNotContain("<script", result);
+        Assert.DoesNotContain("onerror", result);
+        Assert.DoesNotContain("onload", result);
+    }
+
+    [TestMethod]
     public void Sanitize_NullOrWhitespace_ReturnsEmptyString()
     {
         Assert.AreEqual(string.Empty, HtmlSummaryHelper.Sanitize(null));

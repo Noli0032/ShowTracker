@@ -8,7 +8,7 @@ public static class HtmlSummaryHelper
 
     private static HtmlSanitizer CreateSanitizer()
     {
-        var sanitizer = new HtmlSanitizer();
+        var sanitizer = new HtmlSanitizer { KeepChildNodes = true };
         sanitizer.AllowedTags.Clear();
         foreach (var tag in new[] { "p", "b", "i", "em", "strong", "br" })
         {
