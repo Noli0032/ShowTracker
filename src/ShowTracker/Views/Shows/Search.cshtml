@@ -17,7 +17,7 @@
                             </div>
                             <div class="card-body search-card-summary-body bg-body-tertiary">
                                 <div class ="card-text clamped-summary" style="--clamp-lines: 7;">
-                                    @Html.Raw(show.Summary)
+                                    @Html.Raw(HtmlSummaryHelper.Sanitize(show.Summary))
                                 </div>
                             </div>
                         </div>
