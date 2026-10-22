@@ -41,7 +41,7 @@
             <div class="card bg-dark text-white">
                 <div class = "card-body">
                     <h1 class="card-title border-bottom border-light pb-2">@Model.Show.Name</h1>
-                    @Html.Raw(Model.Show.Summary)
+                    @Html.Raw(HtmlSummaryHelper.Sanitize(Model.Show.Summary))
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item list-group-item-dark">Language: @Model.Show.Language</li>
