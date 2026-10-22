@@ -56,6 +56,26 @@ html {
   --bs-card-bg: var(--st-surface);
 }
 
+.site-navbar {
+  --bs-navbar-color: var(--st-text-muted);
+  --bs-navbar-hover-color: #fff;
+  --bs-navbar-active-color: #fff;
+  --bs-navbar-brand-color: #fff;
+  --bs-navbar-brand-hover-color: #fff;
+  background-color: var(--st-surface);
+  border-bottom: 1px solid var(--st-border);
+}
+
+.site-navbar .nav-link.active {
+  font-weight: 500;
+  box-shadow: inset 0 -2px 0 var(--st-text-muted);
+}
+
+.navbar-search {
+  flex: 1 1 auto;
+  max-width: 400px;
+}
+
 .btn:focus-visible, .btn:active:focus-visible, .btn-link.nav-link:focus-visible, .form-check-input:focus {
   box-shadow: 0 0 0 0.2rem var(--st-focus-ring);
 }
